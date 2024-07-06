@@ -1,0 +1,14 @@
+/* 	MAIN CSS 	*/ 
+
+.header {
+	background-color: rgb(21, 20, 16); 
+} 
+
+#productCarousel {
+	padding: 5rem;
+}
+
+.header_text {
+	color: rgb(215, 215, 215); 
+	
+} 
