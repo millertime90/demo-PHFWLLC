@@ -10,5 +10,19 @@
 
 .header_text {
 	color: rgb(215, 215, 215); 
-	
+} 
+
+
+/* media queries for header text and list items */ 
+
+@media (max-width: 685px) {
+	.header_text>h5 { 
+		font-size: 1em; 
+	}
+} 
+
+@media (max-width: 1016px) {
+	.nav-item a, .nav-item button {
+		font-size: 0.7em; 
+	} 
 } 
