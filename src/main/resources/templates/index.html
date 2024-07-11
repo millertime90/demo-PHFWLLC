@@ -59,7 +59,9 @@
 			</nav>
 		</header>
 		<div class="container-fluid bg-dark px-0">
-			<div id="productCarousel" class="carousel slide bg-dark" data-ride="carousel">
+			<div id="productCarousel" class="carousel slide bg-dark" data-ride="carousel"
+				 data-interval="6000"
+			>
 				<ol class="carousel-indicators">
 					<li data-target="#productCarousel" data-slide-to="0" class="active"></li>
 					<li data-target="#productCarousel" data-slide-to="1"></li>
@@ -106,19 +108,19 @@
 						</div>
 					</div>
 				</div>
+				<a class="carousel-control-prev" href="#productCarousel" role="button"
+			   	   data-slide="prev"
+				> 
+					<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+					<span class="sr-only">Previous</span> 
+				</a> 
+				<a class="carousel-control-next" href="#productCarousel" role="button"
+		   	       data-slide="next"
+				>
+					<span class="sr-only">Next</span>
+					<span class="carousel-control-next-icon" aria-hidden="true"></span> 
+				</a>
 			</div>
-			<a class="carousel-control-prev" href="#productCarousel" role="button"
-			   data-slide="prev"
-			> 
-				<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-				<span class="sr-only">Previous</span> 
-			</a> 
-			<a class="carousel-control-next" href="#productCarousel" role="button"
-		   	   data-slide="next"
-			>
-				<span class="sr-only">Next</span>
-				<span class="carousel-control-next-icon" aria-hidden="true"></span> 
-			</a>
 		</div>
 		<script src="/webjars/jquery/3.1.1/jquery.min.js"></script>
 		<script src="/webjars/bootstrap/4.6.0/js/bootstrap.min.js"></script>

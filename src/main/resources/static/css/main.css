@@ -12,6 +12,10 @@
 	color: rgb(215, 215, 215); 
 } 
 
+.carousel-item {
+	transition-duration: 1s; 
+}
+
 /* media queries for header text and list items */ 
 
 @media (max-width: 685px) {
