@@ -8,18 +8,18 @@
 	padding: 5rem;
 }
 
-.header_text {
+.header_text, .carousel-item h5 { 
 	color: rgb(215, 215, 215); 
 } 
 
 .carousel-item {
-	transition-duration: 1s; 
+	transition-duration: 0.5s; 
 }
 
 /* media queries for header text and list items */ 
 
 @media (max-width: 685px) {
-	.header_text>h5 { 
+	.header_text>h5, .carousel-item h5 { 
 		font-size: 1em; 
 	}
 } 
