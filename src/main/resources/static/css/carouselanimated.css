@@ -1,0 +1,47 @@
+/* 	CAROUSELANIMATED CSS 	*/ 
+
+@keyframes fadeIn {
+	0% {opacity: 0; } 
+	100% { opacity: 1; } 
+} 
+
+@keyframes slideInFromRight {
+	0% { 
+		opacity: 0; 
+		transform: translateX(100%); 
+	} 
+	100% {
+		opacity: 1; 
+		transform: translateX(0%); 
+	} 
+} 
+
+@keyframes slideInFromLeft {
+	0% {
+		opacity: 0; 
+		transform: translateX(-100%); 
+	} 
+	100% {
+		opacity: 1; 
+		transform: translateX(0%); 
+	}
+}
+
+.carousel-item h3, .carousel-item h5 {
+	opacity: 0; 
+	animation-fill-mode: forwards !important; 
+} 
+
+.carousel-item h3 {
+	animation: fadeIn 1.15s; 
+} 
+
+.carousel-item h5.slideInFromRight {
+	animation: slideInFromRight 1.15s; 
+	animation-delay: 1.15s; 
+} 
+
+.carousel-item h5.slideInFromLeft {
+	animation: slideInFromLeft 1.15s; 
+	animation-delay: 1.15s; 
+} 

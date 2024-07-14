@@ -14,6 +14,10 @@
 
 .carousel-item {
 	transition-duration: 0.5s; 
+} 
+
+.carousel-item h3, .carousel-item h5 {
+	margin: 1rem; 
 }
 
 /* media queries for header text and list items */ 
