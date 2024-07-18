@@ -41,4 +41,29 @@
 /* VIDS */ 
 .vidclass {
 	display: none; 
+} 
+
+/* 	Categories Section regs 	*/ 
+.cat-container {
+	padding: 2.5rem; 
+}
+
+.cat-container>.row .border {
+	box-shadow: 10px 5px 5px rgba(12, 110, 253, 0.115); 
+	font-weight: bold; 
+	font-size: 0.85em; 
+} 
+
+.cat-row {
+	display: flex; 
+	flex-wrap: wrap; 
+}
+
+.cat-col {
+	display: flex; 
+	flex-direction: column; 
+}
+
+.cat-col * {
+	flex-grow: 1; 
 }
