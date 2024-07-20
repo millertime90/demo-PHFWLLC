@@ -46,6 +46,7 @@
 /* 	Categories Section regs 	*/ 
 .cat-container {
 	padding: 2.5rem; 
+	/*background-image: url("../images/bgimg1.jpg");*/ 
 }
 
 .cat-container>.row .border {
@@ -62,6 +63,7 @@
 .cat-col {
 	display: flex; 
 	flex-direction: column; 
+	background-color: rgba(250, 250, 250, 0.85); 
 }
 
 .cat-col * {
