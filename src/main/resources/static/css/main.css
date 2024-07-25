@@ -68,4 +68,21 @@
 
 .cat-col * {
 	flex-grow: 1; 
+} 
+
+/* 	background images 	*/ 
+
+.bgimgs {
+	padding: 0; 
+	position: relative; 
+	/*overflow: hidden; */
 }
+
+.bgimg1 {
+	width: 100%; 
+	/*max-width: 150%; */
+	position: absolute; 
+	top: 0; 
+	left: 50%; 
+	transform: translate(-50%); 
+} 
