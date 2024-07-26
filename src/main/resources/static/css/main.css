@@ -72,17 +72,14 @@
 
 /* 	background images 	*/ 
 
-.bgimgs {
-	padding: 0; 
-	position: relative; 
-	/*overflow: hidden; */
+.bgimg1 {
+	background-image: url("../images/bgimg1.jpg");  
 }
 
-.bgimg1 {
-	width: 100%; 
-	/*max-width: 150%; */
-	position: absolute; 
-	top: 0; 
-	left: 50%; 
-	transform: translate(-50%); 
+.parallax {
+	min-height: 35rem; 
+	background-attachment: fixed; 
+	background-position: center; 
+	background-repeat: no-repeat; 
+	background-size: 100% 100%; 
 } 

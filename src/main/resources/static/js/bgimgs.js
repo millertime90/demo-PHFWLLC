@@ -1,32 +1,20 @@
 // 	BGIMGS JS 
 
-$(document).ready(function() {
+/*$(document).ready(function() {
 	
-	let catContainer = document.querySelector(".cat-container"); 
-	let ccOffsetTop = $(catContainer).offset().top; 
-	let ccHeight = $(catContainer).height(); 
-	let cc_85percDown = ccHeight * 0.85; 
+	let scroll = $(window).scrollTop(); 
+	let windowHeight = $(window).height(); 
 	
-	console.log("Top offset of categories container: " + ccOffsetTop); 
-	console.log("Height of categories container: " + ccHeight); 
-	console.log("85% of categories container height: " + cc_85percDown); 
-	
-	$(window).scroll(function() {
+	$(".parallax").each(function() {
 		
-		let scroll = $(window).scrollTop(); 
-		if(scroll >= ccOffsetTop && scroll <= ccOffsetTop + cc_85percDown) {
+		let offsetTop = $(this).offset().top; 
+		if(scroll > offsetTop - windowHeight && scroll < offsetTop + windowHeight) {
 			
-			let scrollPercent = (scroll - ccOffsetTop) / cc_85percDown; 
-			
-			$(".bgimg1").css({ width: (100 + scrollPercent * 100) + "%" }); 
-			
-		} 
-		else if(scroll < ccOffsetTop) {
-			
-			$(".bgimg1").css({ width: "100%" }); 
+			let scrollPercent = (scroll + windowHeight - offsetTop) / (2 * windowHeight); 
+			$(this).css("background-size", (100 + scrollPercent * 100) + "%"); 
 			
 		}
 		
 	}); 
 	
-}); 
+}); */ // TEMPORARILY DISABLED 
