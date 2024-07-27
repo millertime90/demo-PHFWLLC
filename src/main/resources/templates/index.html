@@ -1,20 +1,25 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 	<head>
-		<title>PowerHouseFireworksLLC</title>
+		<title>Whistlin'CootersFireworks</title>
 		<meta name="viewport" 
 			  content="width=device-width, initial-scale=1.0" 
 		/>
 		<link rel="stylesheet" href="/webjars/bootstrap/4.6.0/css/bootstrap.min.css" /> 
 		<link rel="stylesheet" href="/css/main.css" /> 
 		<link rel="stylesheet" href="/css/carouselanimated.css" /> 
+		<link rel="stylesheet" href="/css/bgimgs.css" /> 
+		<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+		<link rel="manifest" href="/images/site.webmanifest">
 	</head> 
 	
 	<body class="bg-dark">
 		<header class="header row">
 			<div class="col-sm-4">
 				<a href="#">
-					<img class="header_logo" type="image/png" src="/images/phfwllclogo.PNG"
+					<img class="header_logo" type="image/png" src="/images/android-chrome-192x192.png"
 						 alt="POWERHOUSEFIREWORKSLLCS LOGO" 
 					/>
 				</a>
@@ -153,8 +158,8 @@
 				</a>
 			</div>
 		</div>
-		<div class="container-lg cat-container bg-light">
-			<h2>Categories</h2>
+		<div class="container-lg cat-container">
+			<h2 class="text-light">Categories</h2>
 			<div class="row cat-row text-center p-2">
 				<div class="col-lg-3 col-md-4 col-sm-6 cat-col p-2">
 					<div class="border border-dark rounded p-2">
@@ -258,6 +263,39 @@
 			</div>
 		</div>
 		<div class="parallax bgimg1"></div>
+		<div class="container-fluid about">
+			<div class="row">
+				<div class="col-12">
+					<h2 class="text-light text-center">About</h2>
+				</div>
+				<div class="col-12 d-flex justify-content-center align-items-center">
+					<img class="img-fluid" src="/images/android-chrome-512x512.png" />
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-6 col-sm-2 order-3 order-sm-1 d-flex">
+					<img class="d-block mr-auto" src="/images/brands1.PNG" />
+				</div>
+				<div class="col-12 col-sm-8 order-1 order-sm-2">
+					<h5 class="text-light text-center">
+						Here at Whistlin’ Cooters, we specialize in bringing a touch of magic to your special events with our spectacular fireworks displays. 
+						Whether you’re planning an outdoor festivity, an indoor spectacle, or a bespoke show, our expert team is on hand to help bring your vision to life.
+						<br /><br />
+						We provide a wide range of pyrotechnic products and services tailored to your requirements, from sky-high aerial effects to ground-based displays, 
+						and from indoor illuminations to grand outdoor spectacles. 					
+						<br /><br />
+						Our skilled technicians are always up-to-speed with the latest industry methods and safety regulations, ensuring your display is flawlessly executed.
+						At Whistlin’ Cooters, we’re driven by our passion for crafting unforgettable memories. 
+						<br /><br />
+						Our dedication to quality, safety, and customer satisfaction distinguishes us in the fireworks industry. 
+						Don’t settle for just any fireworks display. Choose Whistlin’ Cooters for a remarkable experience that will leave a lasting impression on you and your guests.
+					</h5>
+				</div>
+				<div class="col-6 col-sm-2 order-2 order-sm-3 d-flex">
+					<img class="d-block ml-auto" src="/images/brands2.PNG" />
+				</div>
+			</div>
+		</div>
 		<script src="/webjars/jquery/3.1.1/jquery.min.js"></script>
 		<script src="/webjars/jquery-ui/1.12.1/jquery-ui.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>

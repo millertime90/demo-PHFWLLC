@@ -46,7 +46,7 @@
 /* 	Categories Section regs 	*/ 
 .cat-container {
 	padding: 2.5rem; 
-	/*background-image: url("../images/bgimg1.jpg");*/ 
+	background-color: rgb(21, 20, 16);
 }
 
 .cat-container>.row .border {
@@ -70,16 +70,8 @@
 	flex-grow: 1; 
 } 
 
-/* 	background images 	*/ 
+/* About Section */ 
 
-.bgimg1 {
-	background-image: url("../images/bgimg1.jpg");  
+.about {
+	background-color: rgb(21, 20, 16); 
 }
-
-.parallax {
-	min-height: 35rem; 
-	background-attachment: fixed; 
-	background-position: center; 
-	background-repeat: no-repeat; 
-	background-size: 100% 100%; 
-} 

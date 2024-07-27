@@ -1,0 +1,13 @@
+/* 	BGIMGS CSS 	*/ 
+
+.bgimg1 {
+	background-image: url("../images/bgimg1.jpg");  
+}
+
+.parallax {
+	min-height: 35rem; 
+	background-attachment: fixed; 
+	background-position: center; 
+	background-repeat: no-repeat; 
+	background-size: 100% 100%; 
+} 
