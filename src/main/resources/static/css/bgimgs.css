@@ -2,12 +2,34 @@
 
 .bgimg1 {
 	background-image: url("../images/bgimg1.jpg");  
+} 
+
+.bgimg2 {
+	background-image: url("../images/bgimg2.jpg"); 
+}
+
+.bgimg2-container {
+	background-color: rgb(21, 20, 16); 
+} 
+
+.bgimg2-container .container {
+	padding: 5rem; 
 }
 
 .parallax {
-	min-height: 35rem; 
+	min-height: 25rem; 
 	background-attachment: fixed; 
 	background-position: center; 
 	background-repeat: no-repeat; 
 	background-size: 100% 100%; 
+} 
+
+@media (max-width: 576px) {
+	.parallax {
+		min-height: 15rem; 
+	} 
+	
+	.bgimg2-container .container {
+		padding: 0rem; 
+	}
 } 

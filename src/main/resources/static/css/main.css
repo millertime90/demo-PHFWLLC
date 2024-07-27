@@ -1,5 +1,9 @@
 /* 	MAIN CSS 	*/ 
 
+html {
+	scroll-behavior: smooth; 
+}
+
 .header {
 	background-color: rgb(21, 20, 16); 
 } 
@@ -74,4 +78,19 @@
 
 .about {
 	background-color: rgb(21, 20, 16); 
+}
+
+.contact {
+	background-color: rgb(21, 20, 16); 
+} 
+
+/* Contact Section */ 
+
+.contact-row {
+	height: 75vh; 
+}
+
+.fab {
+	padding: 2.5rem; 
+	font-size: 2em; 
 }

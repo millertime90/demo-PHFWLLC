@@ -12,7 +12,7 @@ $(document).ready(function() {
 			let offsetTop = $(this).offset().top; 
 			if(scroll > offsetTop - windowHeight && scroll < offsetTop + windowHeight) {
 				
-				let scale = 1 + (scroll + windowHeight - offsetTop) / (2 * windowHeight); 
+				let scale = 1 + (scroll + windowHeight - offsetTop) / (4 * windowHeight); 
 				$(this).css("background-size", (scale * 100) + "%"); 
 				
 			}
