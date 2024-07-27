@@ -1,0 +1,57 @@
+/* 	CONTACT CSS 	*/ 
+
+@keyframes contactSlideInFromLeft {
+	0% {
+		transform: translateX(-100%); 
+	} 
+	100% {
+		transform: translateX(0); 
+	}
+} 
+
+@keyframes contactSlideOutToLeft {
+	0% {
+		transform: translateX(0); 
+	} 
+	100% {
+		transform: translateX(-100%); 
+	}
+} 
+
+@keyframes contactSlideInFromRight {
+	0% {
+		transform: translateX(100%); 
+	} 
+	100% {
+		transform: translateX(0); 
+	}
+} 
+
+@keyframes contactSlideOutToRight {
+	0% {
+		transform: translateX(0); 
+	} 
+	100% {
+		transform: translateX(100%); 
+	} 
+} 
+
+.contact-col .pt-1, .contact-col .pt-3 {
+	animation-duration: 1s; 
+} 
+
+.slideInLeft {
+	animation-name: contactSlideInFromLeft; 
+} 
+
+.slideOutLeft {
+	animation-name: contactSlideOutToLeft; 
+} 
+
+.slideInRight {
+	animation-name: contactSlideInFromRight; 
+} 
+
+.slideOutRight {
+	animation-name: contactSlideOutToRight; 
+} 
