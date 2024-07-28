@@ -20,7 +20,7 @@ $(document).ready(function() {
 			
 		} 
 		
-		if(wst > (contactOT - wh)) {
+		if(wst > (contactOT + contactOH - wh)) {
 			
 			$(".contact-col .pt-3").removeClass("slideOutRight").addClass("slideInRight"); 
 			
