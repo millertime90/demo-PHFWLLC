@@ -2,7 +2,7 @@
 
 @keyframes contactSlideInFromLeft {
 	0% {
-		transform: translateX(-100%); 
+		transform: translateX(-120%); 
 	} 
 	100% {
 		transform: translateX(0); 
@@ -14,13 +14,13 @@
 		transform: translateX(0); 
 	} 
 	100% {
-		transform: translateX(-100%); 
+		transform: translateX(-120%); 
 	}
 } 
 
 @keyframes contactSlideInFromRight {
 	0% {
-		transform: translateX(100%); 
+		transform: translateX(120%); 
 	} 
 	100% {
 		transform: translateX(0); 
@@ -32,7 +32,7 @@
 		transform: translateX(0); 
 	} 
 	100% {
-		transform: translateX(100%); 
+		transform: translateX(120%); 
 	} 
 } 
 
@@ -42,16 +42,20 @@
 
 .slideInLeft {
 	animation-name: contactSlideInFromLeft; 
+	animation-fill-mode: forwards; 
 } 
 
 .slideOutLeft {
 	animation-name: contactSlideOutToLeft; 
+	animation-fill-mode: forwards; 
 } 
 
 .slideInRight {
 	animation-name: contactSlideInFromRight; 
+	animation-fill-mode: forwards; 
 } 
 
 .slideOutRight {
 	animation-name: contactSlideOutToRight; 
+	animation-fill-mode: forwards; 
 } 
