@@ -1,5 +1,26 @@
 /* 	CAROUSELANIMATED CSS 	*/ 
 
+#productCarousel {
+	padding: 5rem;
+}
+
+.header_text, .carousel-item h5, .carousel-item p { 
+	color: rgb(215, 215, 215); 
+} 
+
+.carousel-item p {
+	font-weight: bold; 
+	font-size: 1.15em; 
+}
+
+.carousel-item {
+	transition-duration: 0.5s; 
+} 
+
+.carousel-item h3, .carousel-item h5 {
+	margin: 1rem; 
+}
+
 @keyframes fadeIn {
 	0% {opacity: 0; } 
 	100% { opacity: 1; } 
