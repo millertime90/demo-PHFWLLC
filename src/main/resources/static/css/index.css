@@ -39,3 +39,15 @@
 .contact {
 	background-color: rgb(21, 20, 16); 
 } 
+
+.cbg {
+	background-color: rgb(21, 20, 16); 
+} 
+
+.cpadding {
+	padding: 0; 
+} 
+
+.modal-body {
+	font-size: 1.5em; 
+} 
