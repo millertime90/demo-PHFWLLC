@@ -12,11 +12,13 @@ $(document).ready(function() {
 		
 	}, 3000); 
 	
-	$(adModal).click(function() {
+	function toSignupModal() {
 		
 		$(signupModal).modal("show"); 
 		
-	}); 
+	}
+	
+	$("#adModal .btn-success, .signupBtn").click(toSignupModal); 
 
 	let cr = document.querySelector("#cr"); 
 	let d = new Date(); 

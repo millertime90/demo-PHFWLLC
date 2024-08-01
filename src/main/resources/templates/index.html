@@ -53,16 +53,20 @@
 								<a class="dropdown-item" href="#">View Full Inventory</a> 
 								<div class="dropdown-divider"></div> 
 								<a class="dropdown-item" href="#">Artillery Shells</a> 
+								<a class="dropdown-item" href="#">Aerial Repeaters</a> 
 								<a class="dropdown-item" href="#">Firecrackers</a> 
-								<a class="dropdown-item" href="#">ETC</a> 
-								<a class="dropdown-item" href="#">ETC</a> 
+								<a class="dropdown-item" href="#">Roman Candles</a> 
+								<a class="dropdown-item" href="#">Fountains</a>
+								<a class="dropdown-item" href="#">Sparklers</a>
+								<a class="dropdown-item" href="#">ETC</a>
+								<a class="dropdown-item" href="#">ETC</a>
 							</div>
 						</li> 
 						<li class="nav-item">
 							<button class="btn text-white">Sign-in</button>
 						</li> 
-						<li class="nav-item">
-							<button class="btn text-white">Sign-up</button>
+						<li class="nav-item signupBtn">
+							<button id="signupBtn" class="btn text-white">Sign-up</button>
 						</li>
 					</ul>
 				</div>
@@ -386,30 +390,47 @@
 							<fieldset class="col-sm-6">
 								<legend>Name</legend>
 								<div class="form-group">
-									<label for="fname">First Name:</label>
+									<label for="fname">
+										First Name:
+										<span style="color:red;">*</span>
+									</label>
 									<input id="fname" class="form-control" name="fname"
-										   type="text" 
+										   type="text" required
 									/>
-									<label for="lname">Last Name:</label>
+									<label for="lname">
+										Last Name:
+										<span style="color:red;">*</span>
+									</label>
 									<input id="lname" class="form-control" name="lname"
-										   type="text"
+										   type="text" required
 									/>
 								</div>
 							</fieldset>
 							<fieldset class="col-sm-6">
 								<legend>Login Data</legend>
 								<div class="form-group">
-									<label for="email">Email Address:</label>
+									<label for="email">
+										Email Address:
+										<span style="color:red;">*</span>
+									</label>
 									<input id="email" class="form-control" name="email"
-										   type="email"
+										   type="email" required
 									/>
-									<label for="username">Username:</label>
+									<label for="username">
+										Username:
+										<span style="color:red;">*</span>
+									</label>
 									<input id="username" class="form-control" name="username"
 										   type="text" placeholder="Input desired username"
+										    required
 									/>
-									<label for="password">Password:</label>
+									<label for="password">
+										Password:
+										<span style="color:red;">*</span>
+									</label>
 									<input id="password" class="form-control" name="password"
 										   type="password" placeholder="Input desired password"
+										    required
 									/>
 								</div>
 							</fieldset>
