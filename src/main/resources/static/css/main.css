@@ -105,3 +105,7 @@ html, body {
 	animation-name: contactSlideOutToRight; 
 	animation-fill-mode: forwards; 
 } 
+
+.fa-fw {
+	padding: 0; 
+}

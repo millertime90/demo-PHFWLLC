@@ -356,7 +356,6 @@
 							<div class="col-6 d-flex flex-column cbg">
         						<div class="modal-header">
           							<button type="button" class="close text-danger" data-dismiss="modal">&times;</button>
-          						
         						</div>
         						<!-- Modal body -->
         						<div class="modal-body text-light">
@@ -373,6 +372,69 @@
         			</div>
       			</div>
     		</div>
+		</div>
+		<div class="modal" id="signupModal">
+			<div class="modal-dialogue">
+				<div class="modal-content bg-dark">
+					<div class="container-lg bg-dark text-light">
+						<form action="/signup" method="post" class="row border">
+							<button type="button" class="close text-danger ml-auto mr-3" data-dismiss="modal">&times;</button>
+							<div class="col-sm-12 d-flex justify-content-around p-3">
+								<h1>Sign-Up</h1>
+								<img class="img-fluid" src="/images/android-chrome-192x192.png" alt="WCLOGO" />
+							</div>
+							<fieldset class="col-sm-6">
+								<legend>Name</legend>
+								<div class="form-group">
+									<label for="fname">First Name:</label>
+									<input id="fname" class="form-control" name="fname"
+										   type="text" 
+									/>
+									<label for="lname">Last Name:</label>
+									<input id="lname" class="form-control" name="lname"
+										   type="text"
+									/>
+								</div>
+							</fieldset>
+							<fieldset class="col-sm-6">
+								<legend>Login Data</legend>
+								<div class="form-group">
+									<label for="email">Email Address:</label>
+									<input id="email" class="form-control" name="email"
+										   type="email"
+									/>
+									<label for="username">Username:</label>
+									<input id="username" class="form-control" name="username"
+										   type="text" placeholder="Input desired username"
+									/>
+									<label for="password">Password:</label>
+									<input id="password" class="form-control" name="password"
+										   type="password" placeholder="Input desired password"
+									/>
+								</div>
+							</fieldset>
+							<fieldset class="col-sm-12">
+								<div class="form-group">
+									<button type="submit" class="btn btn-block btn-success">Sign-Up!</button>
+								</div>
+								<h5>OR</h5>
+							</fieldset>
+							<fieldset class="col-sm-12">
+								<div class="form-group">
+									<button type="button" class="btn btn-block btn-danger">
+										<i class="fab fa-google fa-fw"></i>
+										Sign up with Google
+									</button>
+									<button type="button" class="btn btn-primary btn-block">
+										<i class="fab fa-facebook fa-fw"></i>
+										Sign up with Facebook
+									</button>
+								</div>
+							</fieldset>
+						</form>
+					</div>
+				</div>
+			</div>
 		</div>
 		<script src="/webjars/jquery/3.1.1/jquery.min.js"></script>
 		<script src="/webjars/jquery-ui/1.12.1/jquery-ui.min.js"></script>
