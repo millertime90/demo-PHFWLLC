@@ -18,7 +18,12 @@ $(document).ready(function() {
 		
 	}
 	
-	[document.querySelector("#adModal .btn-success"), document.querySelector(".signupBtn")].forEach(i => {
+	[
+		document.querySelector("#adModal .btn-success"), 
+		document.querySelector(".signupBtn"),
+		document.querySelector("#signupBtn")
+	]
+	.forEach(i => {
 		
 		i.addEventListener("click", toSignupModal); 
 		i.addEventListener("touchend", toSignupModal); 
