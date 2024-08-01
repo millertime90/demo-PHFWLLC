@@ -18,7 +18,7 @@ $(document).ready(function() {
 		
 	}
 	
-	$("#adModal .btn-success, .signupBtn, #signupBtn").click(toSignupModal); 
+	$("#adModal .btn-success, .signupBtn, #signupBtn").on("click touchend", toSignupModal); 
 
 	let cr = document.querySelector("#cr"); 
 	let d = new Date(); 
