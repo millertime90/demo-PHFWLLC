@@ -18,7 +18,12 @@ $(document).ready(function() {
 		
 	}
 	
-	$("#adModal .btn-success, .signupBtn, #signupBtn").on("click touchend", toSignupModal); 
+	[document.querySelector("#adModal .btn-success"), document.querySelector(".signupBtn")].forEach(i => {
+		
+		i.addEventListener("click", toSignupModal); 
+		i.addEventListener("touchend", toSignupModal); 
+		
+	}); 
 
 	let cr = document.querySelector("#cr"); 
 	let d = new Date(); 
