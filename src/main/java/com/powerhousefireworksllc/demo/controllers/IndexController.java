@@ -1,13 +1,16 @@
 package com.powerhousefireworksllc.demo.controllers; 
 
-import org.springframework.stereotype.Controller; 
+import org.springframework.web.bind.annotation.RestController; 
+import org.springframework.web.bind.annotation.RequestMapping; 
 import org.springframework.web.bind.annotation.GetMapping; 
+import org.springframework.web.bind.annotation.PostMapping; 
 import org.springframework.web.servlet.ModelAndView; 
 
-@Controller
+@RestController 
+@RequestMapping("/index")
 public class IndexController { 
 	
-	@GetMapping({"/", "/index"})
+	@GetMapping("/index")
 	public ModelAndView getIndex() { 
 		
 		System.out.println("`getIndex` method invoked"); 
@@ -16,5 +19,6 @@ public class IndexController {
 		return modelAndView; 
 		
 	} 
+	
 	
 } 
