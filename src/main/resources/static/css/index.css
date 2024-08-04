@@ -51,3 +51,22 @@
 .modal-body {
 	font-size: 1.5em; 
 } 
+
+/* Signup Form Regs */ 
+#passwordStrengthIndicator-container {
+	height: 0.5em; 
+	visibility: hidden; 
+} 
+
+#passwordStrengthIndicator {
+	width: 0%; 
+	height: 100%; 
+} 
+
+.requirementIndicator {
+	color: red; 
+} 
+
+.bg-successPlus {
+	background-color: green; 
+} 

@@ -20,7 +20,7 @@ $(document).ready(function() {
 	
 	[
 		document.querySelector("#adModal .btn-success"), 
-		document.querySelector("#signupBtn")
+		document.querySelector("#headerSignupBtn")
 	]
 	.forEach(i => {
 		

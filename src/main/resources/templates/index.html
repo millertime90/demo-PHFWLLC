@@ -66,7 +66,7 @@
 							<button class="btn text-white">Sign-in</button>
 						</li> 
 						<li class="nav-item signupBtn">
-							<button id="signupBtn" class="btn text-white">Sign-up</button>
+							<button id="headerSignupBtn" class="btn text-white">Sign-up</button>
 						</li>
 					</ul>
 				</div>
@@ -381,7 +381,9 @@
 			<div class="modal-dialogue">
 				<div class="modal-content bg-dark">
 					<div class="container-lg bg-dark text-light">
-						<form action="/signup" method="post" class="row border">
+						<form id="signupForm" action="/signup" method="post" 
+							  class="row border"
+						>
 							<button type="button" class="close text-danger ml-auto mr-3" data-dismiss="modal">&times;</button>
 							<div class="col-sm-12 d-flex justify-content-around p-3">
 								<h1>Sign-Up</h1>
@@ -404,6 +406,15 @@
 									<input id="lname" class="form-control" name="lname"
 										   type="text" required
 									/>
+									<p class="mt-3">
+										<b>Password Requirements:</b><br />
+										<i class="requirementIndicator">*</i> Minimum of 1 lowercase character<br />
+										<i class="requirementIndicator">*</i> Minimum of 1 uppercase character<br />
+										<i class="requirementIndicator">*</i> Minimum of 8 characters total<br />
+										<i class="requirementIndicator">*</i> Minimum of 1 numeric character<br />
+										<i class="requirementIndicator">*</i> Minimum of 1 special character<br />
+										<i class="requirementIndicator">*</i> No spaces allowed<br />
+									</p>
 								</div>
 							</fieldset>
 							<fieldset class="col-sm-6">
@@ -422,21 +433,33 @@
 									</label>
 									<input id="username" class="form-control" name="username"
 										   type="text" placeholder="Input desired username"
-										    required
+										   required
 									/>
-									<label for="password">
+									<label for="signup-password">
 										Password:
 										<span style="color:red;">*</span>
 									</label>
-									<input id="password" class="form-control" name="password"
+									<input id="signup-password" class="form-control" name="password"
 										   type="password" placeholder="Input desired password"
-										    required
+										   required
 									/>
+									<label for="signup-confirm_password">
+										Confirm Password:
+										<span style="color:red;">*</span>
+									</label>
+									<input id="signup-confirm_password" class="form-control" name="confirm_password" 
+										   type="password" placeholder="Confirm desired password" 
+										   required 
+									/> 
+									<div id="passwordStrengthIndicator-container" class="border mt-3">
+										<div id="passwordStrengthIndicator" class="bg-danger"></div>
+									</div>
+									<p id="psiText"></p>
 								</div>
 							</fieldset>
 							<fieldset class="col-sm-12">
 								<div class="form-group">
-									<button type="submit" class="btn btn-block btn-success">Sign-Up!</button>
+									<button id="signupBtn" type="submit" class="btn btn-block btn-success">Sign-Up!</button>
 								</div>
 								<h5>OR</h5>
 							</fieldset>
@@ -467,5 +490,6 @@
 		<script src="/js/carouselanimated.js"></script> 
 		<script src="/js/bgimgs.js"></script> 
 		<script src="/js/contact.js"></script>
+		<script src="/js/signup.js"></script>
 	</body>
 </html> 
