@@ -5,6 +5,7 @@ $(document).ready(function() {
 	let signupBtn = document.querySelector("#signupBtn"); 
 	let passwordField = document.querySelector("#signup-password"); 
 	let passwordStrengthIndicatorContainer = document.querySelector("#passwordStrengthIndicator-container");
+	let requirementIndicators = document.querySelectorAll(".requirementIndicator"); 
 	
 	function updatePasswordStrengthIndicator(strength) {
 		
@@ -87,6 +88,7 @@ $(document).ready(function() {
 		
 	} 
 	
+	// For password requirement indicators 
 	function updateRequirementIndicators(password) {
 		
 		const requirements = [
@@ -134,6 +136,122 @@ $(document).ready(function() {
 		
 	} 
 	
+	// For field label requirement indicators 
+	
+	function haveSameClass(nodeList) {
+				
+		let bool = true; 
+				
+		nodeList.forEach(i => {
+					
+			if(!/fas fa-check-circle/.test(i.getAttribute("class"))) {
+						
+				bool = false; 
+						
+			} 
+					
+		}); 
+				
+		return bool; 
+				
+	} 
+	
+	function updateReq(e) {
+		
+		let reqIndicator = $(e.target).prev().find("i"); 
+		
+		if(e.target.name == "fname" || e.target.name == "lname" || e.target.name == "username") {
+			
+			if($(e.target).val().length > 0 && $(e.target).val().match(/^(?=.*[a-zA-Z]).*$/)) {
+				
+				reqIndicator.css("color", "green"); 
+				reqIndicator.attr("class", "fas fa-check-circle"); 
+				reqIndicator.html(""); 
+				
+			} 
+			else {
+				
+				reqIndicator.css("color", "red"); 
+				reqIndicator.removeClass("fas fa-check-circle"); 
+				reqIndicator.html("*"); 
+				
+			}
+			
+		} 
+		else if(e.target.name == "email") {
+			
+			if(/\.(com|net|org|edu|gov|mil|biz|info|mobi|name|aero|jobs|museum)$/.test($(e.target).val())) {
+				
+				reqIndicator.css("color", "green"); 
+				reqIndicator.attr("class", "fas fa-check-circle"); 
+				reqIndicator.html(""); 
+				
+			} 
+			else {
+				
+				reqIndicator.css("color", "red"); 
+				reqIndicator.removeClass("fas fa-check-circle"); 
+				reqIndicator.html("*"); 
+				
+			}
+			
+		}
+		else if(e.target.name == "password") {
+			
+			if(haveSameClass(requirementIndicators)) {
+				
+				reqIndicator.css("color", "green"); 
+				reqIndicator.attr("class", "fas fa-check-circle"); 
+				reqIndicator.html(""); 
+				
+			} 
+			else {
+				
+				reqIndicator.css("color", "red"); 
+				reqIndicator.removeClass("fas fa-check-circle"); 
+				reqIndicator.html("*"); 
+				
+			}
+			
+		} 
+		else {
+			
+			if($("#signup-password").val() == $("#signup-confirm_password").val()) {
+				
+				reqIndicator.css("color", "green"); 
+				reqIndicator.attr("class", "fas fa-check-circle"); 
+				reqIndicator.html(""); 
+				
+			} 
+			else {
+				
+				reqIndicator.css("color", "red"); 
+				reqIndicator.removeClass("fas fa-check-circle"); 
+				reqIndicator.html("*"); 
+				
+			}
+			
+		} 
+		
+		if(haveSameClass(document.querySelectorAll("#signupForm label i"))) {
+			
+			$(signupBtn).prop("disabled", false); 
+			
+		}
+		
+	} 
+	
+	function resetRequirementIndicators() {
+		
+		$(requirementIndicators).removeClass("fas fa-check-circle");
+		$(requirementIndicators).css("color", "red"); 
+		$(requirementIndicators).html("*"); 
+		$(document.querySelectorAll("#signupForm label i")).removeClass("fas fa-check-circle");
+		$(document.querySelectorAll("#signupForm label i")).css("color", "red"); 
+		$(document.querySelectorAll("#signupForm label i")).html("*"); 
+		
+	} 
+	
 	$(signupBtn).prop("disabled", true); 
 	$(passwordField).on("input", function() {
 		
@@ -154,6 +272,7 @@ $(document).ready(function() {
 		
 	}); 
 	
+	$("#signupForm input").on("input", updateReq); 
 	$("#signupForm").on("submit", function(e) {
 		
 		e.preventDefault(); 
@@ -182,6 +301,10 @@ $(document).ready(function() {
 					
 				}
 				
+				resetRequirementIndicators(); 
+				$(passwordStrengthIndicatorContainer).css("visibility", "hidden"); 
+				$("#psiText").html(""); 
+				$(signupBtn).prop("disabled", true); 
 				$(this)[0].reset(); 
 				
 			}.bind(this), 
