@@ -70,3 +70,19 @@
 .bg-successPlus {
 	background-color: green; 
 } 
+
+/* Signup Response Modal Regs */ 
+#emailVerificationModal .modal-header {
+	background-color: rgb(21, 20, 16); 
+	color: white; 
+} 
+
+#emailVerificationModal .modal-body, #emailVerificationModal .modal-footer {
+	background-color: rgb(52, 58, 64); 
+	color: white; 
+	font-size: 0.8em; 
+} 
+
+#emailVerificationModal .close {
+	color: red; 
+} 

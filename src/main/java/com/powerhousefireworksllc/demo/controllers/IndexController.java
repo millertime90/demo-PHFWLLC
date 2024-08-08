@@ -1,7 +1,6 @@
 package com.powerhousefireworksllc.demo.controllers; 
 
 import org.springframework.stereotype.Controller; 
-
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RequestBody; 
 import org.springframework.web.bind.annotation.GetMapping; 
@@ -11,6 +10,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.ModelAndView; 
 import org.springframework.http.ResponseEntity; 
 import org.springframework.http.HttpStatus; 
+
+import java.util.Map; 
+import java.util.HashMap; 
 import java.util.UUID;
 
 import com.powerhousefireworksllc.demo.DTO.RegistrationDTO;
@@ -34,14 +36,19 @@ public class IndexController {
 	
 	@PostMapping({"/", "/signup"})
 	@ResponseBody
-	public ResponseEntity<RegistrationDTO> register(@RequestBody RegistrationDTO registrationDTO) {
+	public ResponseEntity<Map<String, String>> register(@RequestBody RegistrationDTO registrationDTO) {
 		
+		Map<String, String> response = new HashMap<String, String>(); 
 		String token = UUID.randomUUID().toString(); 
+		
+		response.put("message",  "Form successfully submitted"); 
+		response.put("email", registrationDTO.getEmail()); 
+		
 		System.out.println(token); 
 		
-		this.emailService.sendVerificationEmail(registrationDTO.getEmail(), token); 
+		this.emailService.sendVerificationEmail(registrationDTO.getFullName(), registrationDTO.getEmail(), token); 
 		
-		return new ResponseEntity<>(registrationDTO, HttpStatus.OK); 
+		return new ResponseEntity<>(response, HttpStatus.OK); 
 		
 	}
 	

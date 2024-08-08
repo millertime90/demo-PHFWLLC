@@ -292,20 +292,17 @@ $(document).ready(function() {
 			type: "POST", 
 			contentType: "application/json", 
 			data: JSON.stringify(formData), 
-			success: function(response) {
+			success: function(response) { 
 				
-				console.log("Response Entity:"); 
-				for(let i in response) {
-					
-					console.log(i + ": " + response[i]); 
-					
-				}
-				
+				console.log(response.message); 
 				resetRequirementIndicators(); 
 				$(passwordStrengthIndicatorContainer).css("visibility", "hidden"); 
 				$("#psiText").html(""); 
 				$(signupBtn).prop("disabled", true); 
 				$(this)[0].reset(); 
+				$("#signupModal").modal("hide"); 
+				$("#responseEmail").text(response.email); 
+				$("#emailVerificationModal").modal("show"); 
 				
 			}.bind(this), 
 			error: function(xhr, status, error) {

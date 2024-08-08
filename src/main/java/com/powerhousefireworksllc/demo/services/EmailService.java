@@ -11,11 +11,15 @@ public class EmailService {
 	
 	@Autowired JavaMailSender mailSender; 
 	
-	public void sendVerificationEmail(String email, String token) {
+	public void sendVerificationEmail(String name, String email, String token) {
 		
 		SimpleMailMessage message = new SimpleMailMessage(); 
 		String verificationLink = "https://rocky-plateau-85156-606894c349ef.herokuapp.com/verify?token=" + token; 
-		String messageBody = "Please click the following link to verify your email " + verificationLink; 
+		String messageBody = 
+				"Hello " + name + "\n\n" +
+				"Thanks for signing up for a free account at WC.\n" + 
+				"Remember, by signing up for a new account, you can save 15% off your first order that is\n" + 
+				"at or above $100.\n\nBest regards,\n-WC\n\nPlease click the following link to verify your email " + verificationLink; 
 		
 		message.setTo(email); 
 		message.setSubject("Email Verification"); 

@@ -480,6 +480,37 @@
 				</div>
 			</div>
 		</div>
+		<div id="emailVerificationModal" class="modal fade" tabindex="-1"
+			 role="dialog" aria-labelledby="emailVerificationModalLabel"
+			 aria-hidden="true"
+		>
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 id="emailVerificationModalLabel" class="modal-title">Thanks for Signing Up!</h5>
+						<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close"
+						>
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						Check your inbox at <b id="responseEmail"></b>
+						<br />
+						for a verification link to verify your email address and activate your account. 
+						<br />
+						Check spam folder in case it is not present in your inbox. 
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-primary" 
+								onclick="$('#emailVerificationModal').modal('hide');"
+						>
+							OK
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
 		<script src="/webjars/jquery/3.1.1/jquery.min.js"></script>
 		<script src="/webjars/jquery-ui/1.12.1/jquery-ui.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
