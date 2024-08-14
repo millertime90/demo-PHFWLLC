@@ -1,7 +1,8 @@
 package com.powerhousefireworksllc.demo.services; 
 
 import org.springframework.stereotype.Service; 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Autowired; 
+import org.springframework.beans.factory.annotation.Value; 
 
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.SimpleMailMessage; 
@@ -9,12 +10,16 @@ import org.springframework.mail.SimpleMailMessage;
 @Service
 public class EmailService {
 	
-	@Autowired JavaMailSender mailSender; 
+	@Autowired 
+	JavaMailSender mailSender; 
+	
+	@Value("${app.base.url}")
+	private String baseURL; 
 	
 	public void sendVerificationEmail(String name, String email, String token) {
 		
 		SimpleMailMessage message = new SimpleMailMessage(); 
-		String verificationLink = "https://rocky-plateau-85156-606894c349ef.herokuapp.com/verify?token=" + token; 
+		String verificationLink = baseURL + "/verify?token=" + token; 
 		String messageBody = 
 				"Hello " + name + "\n\n" +
 				"Thanks for signing up for a free account at WC.\n" + 

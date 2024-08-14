@@ -287,7 +287,6 @@ $(document).ready(function() {
 		}; 
 		
 		$.ajax({
-			
 			url: "/signup", 
 			type: "POST", 
 			contentType: "application/json", 
