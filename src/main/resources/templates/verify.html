@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" /> 
+		<meta name="viewport" 
+			  content="width=deivce-width, initial-scale=1.0" 
+		/> 
+		<title>Email Verification</title> 
+		<link rel="stylesheet" href="/webjars/bootstrap/4.6.0/css/bootstrap.min.css" /> 
+		<link rel="stylesheet" href="/css/verify.css" /> 
+	</head> 
+	
+	<body>
+		<div class="container">
+			<h5>
+				Thanks again for signing up for an account with Whistlin' Cooters. 
+				Click the button link below to verify your email address to complete your account registration. 
+			</h5> 
+			<form id="verifyForm" action="/verifyToken" method="get">
+				<input type="hidden" id="token" th:value="${token}" /> 
+				<button type="submit" class="btn btn-custom">Verify Email</button> 
+			</form> 
+		</div>
+		<script type="text/javascript" src="/js/verifyEmail.js"></script>
+	</body>
+</html>

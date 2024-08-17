@@ -1,0 +1,24 @@
+/* 	VERIFY CSS 	*/ 
+
+body {
+	background-image: url("/images/bgimg1.jpg"); 
+	color: rgb(52, 58, 64); 
+	display: flex; 
+	justify-content: center; 
+	align-items: center; 
+	height: 100vh; 
+} 
+
+.container {
+	text-align: center; 
+	background-color: rgba(21, 20, 16, 0.8); 
+	padding: 30px; 
+	border-radius: 10px; 
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+	color: white; 
+} 
+
+.btn-custom {
+	background-color: rgb(52, 58, 64); 
+	color: white; 
+} 
