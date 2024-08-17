@@ -10,6 +10,7 @@ public class RegistrationDTO {
 	private String username; 
 	private String password; 
 	private String confirm_password; 
+	private String token; 
 	
 	// GETTERS AND SETTERS 
 	
@@ -90,5 +91,17 @@ public class RegistrationDTO {
 		this.confirm_password = confirm_password; 
 		
 	} 
+	
+	public String getToken() {
+		
+		return this.token; 
+		
+	} 
+	
+	public void setToken(String token) {
+		
+		this.token = token; 
+		
+	}
 	
 }

@@ -76,6 +76,12 @@ public class User {
 		
 	} 
 	
+	public String getFullName() {
+		
+		return this.fname + " " + this.lname; 
+		
+	}
+	
 	public String getEmail() {
 		
 		return this.email; 
