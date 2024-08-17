@@ -5,6 +5,7 @@ import com.powerhousefireworksllc.demo.services.UserService;
 import org.springframework.stereotype.Controller; 
 import org.springframework.web.bind.annotation.GetMapping; 
 import org.springframework.web.bind.annotation.RequestParam; 
+import org.springframework.web.bind.annotation.ResponseBody; 
 import org.springframework.beans.factory.annotation.Autowired; 
 
 import org.springframework.web.servlet.ModelAndView; 
@@ -17,7 +18,17 @@ public class EmailVerificationController {
 	@Autowired
 	private UserService userService; 
 	
+	@GetMapping({"/", "/verify"})
+	public ModelAndView getVerifyView(@RequestParam("token") String token) {
+		
+		ModelAndView modelAndView = new ModelAndView("verify"); 
+		modelAndView.addObject("token", token); 
+		return modelAndView; 
+		
+	}
+	
 	@GetMapping({"/", "/verifyToken"})
+	@ResponseBody
 	public ResponseEntity<String> verifyEmail(@RequestParam("token") String token) {
 		
 		Boolean isVerified = userService.verifyUser(token); 
