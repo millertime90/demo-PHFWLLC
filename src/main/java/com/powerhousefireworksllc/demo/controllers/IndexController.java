@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.GetMapping; 
 import org.springframework.web.bind.annotation.PostMapping; 
 import org.springframework.beans.factory.annotation.Autowired; 
+import org.springframework.web.bind.annotation.ExceptionHandler; 
 
 import org.springframework.web.servlet.ModelAndView; 
 import org.springframework.http.ResponseEntity; 
@@ -18,13 +19,18 @@ import java.util.UUID;
 import com.powerhousefireworksllc.demo.DTO.RegistrationDTO; 
 import com.powerhousefireworksllc.demo.services.UserService; 
 import com.powerhousefireworksllc.demo.services.EmailService; 
-// import com.powerhousefireworksllc.demo.models.User; 
+import com.powerhousefireworksllc.demo.models.User; 
+import com.powerhousefireworksllc.demo.exceptions.EmailAlreadyExistsException; 
+import com.powerhousefireworksllc.demo.exceptions.InvalidEmailFormatException; 
+import com.powerhousefireworksllc.demo.exceptions.InvalidPasswordException; 
+import com.powerhousefireworksllc.demo.exceptions.UsernameAlreadyExistsException; 
+
 
 @Controller 
 public class IndexController { 
 	
-	//@Autowired
-	//private UserService userService; 
+	@Autowired
+	private UserService userService; 
 	
 	@Autowired
 	private EmailService emailService; 
@@ -41,13 +47,13 @@ public class IndexController {
 	
 	@PostMapping({"/", "/signup"})
 	@ResponseBody
-	public ResponseEntity<Map<String, String>> register(@RequestBody RegistrationDTO registrationDTO) {
+	public ResponseEntity<Map<String, String>> register(@RequestBody RegistrationDTO registrationDTO) throws Exception {
 		
 		Map<String, String> response = new HashMap<String, String>(); 
 		String token = UUID.randomUUID().toString(); 
 		
 		// Validate and save user data 
-		/*User user =*/ // userService.registerUser(registrationDTO, token); 
+		User user = this.userService.registerUser(registrationDTO, token); 
 		
 		response.put("message",  "Form successfully submitted"); 
 		response.put("email", registrationDTO.getEmail()); 
@@ -58,6 +64,46 @@ public class IndexController {
 		this.emailService.sendVerificationEmail(registrationDTO.getFullName(), registrationDTO.getEmail(), token); 
 		
 		return new ResponseEntity<>(response, HttpStatus.OK); 
+		
+	} 
+	
+	@ExceptionHandler(EmailAlreadyExistsException.class)
+	public ResponseEntity<Map<String, String>> handleEmailAlreadyExistsException(EmailAlreadyExistsException ex) {
+		
+		Map<String, String> response = new HashMap<>(); 
+		response.put("message", ex.getMessage()); 
+		
+		return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST); 
+		
+	} 
+	
+	@ExceptionHandler(InvalidEmailFormatException.class)
+	public ResponseEntity<Map<String, String>> handleInvalidEmailFormatException(InvalidEmailFormatException ex) {
+		
+		Map<String, String> response = new HashMap<>(); 
+		response.put("message", ex.getMessage()); 
+		
+		return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST); 
+		
+	} 
+	
+	@ExceptionHandler(UsernameAlreadyExistsException.class)
+	public ResponseEntity<Map<String, String>> handleUsernameAlreadyExistsException(UsernameAlreadyExistsException ex) {
+		
+		Map<String, String> response = new HashMap<>(); 
+		response.put("message", ex.getMessage()); 
+		
+		return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST); 
+		
+	}
+	
+	@ExceptionHandler(InvalidPasswordException.class)
+	public ResponseEntity<Map<String, String>> handleInvalidPasswordException(InvalidPasswordException ex) {
+		
+		Map<String, String> response = new HashMap<>(); 
+		response.put("message", ex.getMessage()); 
+		
+		return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST); 
 		
 	}
 	

@@ -11,7 +11,7 @@ import org.springframework.mail.SimpleMailMessage;
 public class EmailService {
 	
 	@Autowired 
-	JavaMailSender mailSender; 
+	private JavaMailSender mailSender; 
 	
 	@Value("${app.base.url}")
 	private String baseURL; 
@@ -30,7 +30,7 @@ public class EmailService {
 		message.setSubject("Email Verification"); 
 		message.setText(messageBody); 
 		
-		mailSender.send(message); 
+		this.mailSender.send(message); 
 		
 	}
 	

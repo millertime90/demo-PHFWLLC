@@ -38,7 +38,7 @@ public class User {
 	@Column(name = "verified")
 	private Boolean verified; 
 	
-	// other fields, getters, setters, and etc. will follow in further development 
+	// other fields, getters, setters, and etc.
 	
 	public Long getId() {
 		
