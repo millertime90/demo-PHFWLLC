@@ -306,7 +306,12 @@ $(document).ready(function() {
 			}.bind(this), 
 			error: function(xhr, status, error) {
 				
+				let response = JSON.parse(xhr.responseText); 
+				
+				alert(response.message); 
+				
 				console.error(error); 
+				console.error(response.message); 
 				
 			}
 			

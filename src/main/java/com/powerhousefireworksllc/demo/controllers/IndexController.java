@@ -22,7 +22,8 @@ import com.powerhousefireworksllc.demo.services.EmailService;
 import com.powerhousefireworksllc.demo.models.User; 
 import com.powerhousefireworksllc.demo.exceptions.EmailAlreadyExistsException; 
 import com.powerhousefireworksllc.demo.exceptions.InvalidEmailFormatException; 
-import com.powerhousefireworksllc.demo.exceptions.InvalidPasswordException; 
+import com.powerhousefireworksllc.demo.exceptions.InvalidPasswordException;
+import com.powerhousefireworksllc.demo.exceptions.InvalidUsernameFormatException;
 import com.powerhousefireworksllc.demo.exceptions.UsernameAlreadyExistsException; 
 
 
@@ -87,6 +88,16 @@ public class IndexController {
 		
 	} 
 	
+	@ExceptionHandler(InvalidUsernameFormatException.class)
+	public ResponseEntity<Map<String, String>> handleInvalidUsernameFormatException(InvalidUsernameFormatException ex) {
+		
+		Map<String, String> response = new HashMap<>(); 
+		response.put("message", ex.getMessage()); 
+		
+		return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST); 
+		
+	}
+	
 	@ExceptionHandler(UsernameAlreadyExistsException.class)
 	public ResponseEntity<Map<String, String>> handleUsernameAlreadyExistsException(UsernameAlreadyExistsException ex) {
 		
@@ -105,6 +116,6 @@ public class IndexController {
 		
 		return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST); 
 		
-	}
+	} 
 	
 } 

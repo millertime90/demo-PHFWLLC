@@ -3,17 +3,18 @@ package com.powerhousefireworksllc.demo.services;
 import com.powerhousefireworksllc.demo.models.User; 
 import com.powerhousefireworksllc.demo.DTO.RegistrationDTO; 
 import com.powerhousefireworksllc.demo.repositories.UserRepository; 
-import com.powerhousefireworksllc.demo.exceptions.InvalidPasswordException; 
+import com.powerhousefireworksllc.demo.exceptions.InvalidPasswordException;
+import com.powerhousefireworksllc.demo.exceptions.InvalidUsernameFormatException;
 import com.powerhousefireworksllc.demo.exceptions.InvalidEmailFormatException; 
 import com.powerhousefireworksllc.demo.exceptions.EmailAlreadyExistsException; 
 import com.powerhousefireworksllc.demo.exceptions.UsernameAlreadyExistsException; 
 
 import org.springframework.stereotype.Service; 
-import org.springframework.beans.factory.annotation.Autowired; 
-import org.springframework.security.crypto.password.PasswordEncoder; 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.util.regex.Pattern; 
-import java.util.regex.Matcher; 
+import java.util.regex.Matcher;
 
 @Service
 public class UserService {
@@ -49,6 +50,15 @@ public class UserService {
 			throw new EmailAlreadyExistsException(message); 
 			
 		} 
+		
+		// Username format validation
+		if(!usernameValidator(registrationDTO.getUsername())) { 
+			
+			String message = "Username field cannot be blank."; 
+			
+			throw new InvalidUsernameFormatException(message); 
+			
+		}
 		
 		/*
 		 * Cross reference user submitted username with 
@@ -146,6 +156,12 @@ public class UserService {
 		Matcher matcher = pattern.matcher(email); 
 		
 		return matcher.matches(); 
+		
+	} 
+	
+	public Boolean usernameValidator(String username) {
+		
+		return !username.equals(""); 
 		
 	}
 	
