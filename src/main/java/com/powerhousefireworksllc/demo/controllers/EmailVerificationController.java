@@ -31,9 +31,12 @@ public class EmailVerificationController {
 	@ResponseBody
 	public ResponseEntity<String> verifyEmail(@RequestParam("token") String token) {
 		
-		Boolean isVerified = this.userService.verifyUser(token); 
+		System.out.println("`verifyEmail` invoked"); 
 		
-		String verifySuccess = "Email verified successfully!"; 
+		Boolean isVerified = this.userService.verifyUser(token); 
+		System.out.println("User exists by token (" + token + "): " + isVerified); 
+		
+		String verifySuccess = "Email verified successfully. Your account is now activated."; 
 		String verifyUnsuccess = "Invalid or expired token."; 
 		
 		if(isVerified) {

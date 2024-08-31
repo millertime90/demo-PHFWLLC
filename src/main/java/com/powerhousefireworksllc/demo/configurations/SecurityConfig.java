@@ -35,14 +35,13 @@ public class SecurityConfig {
 //		http.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)); 
 //		http.httpBasic(withDefaults()); 
 		http.authorizeHttpRequests()
-			.requestMatchers("/index").permitAll()
-			.requestMatchers("/css/**").permitAll()
-			.requestMatchers("/js/**").permitAll()
-			.requestMatchers("/images/**").permitAll()
-			.requestMatchers("/webjars/**").permitAll()
-			.requestMatchers("/video/**").permitAll()
-			.requestMatchers("/signup").permitAll()
-			.anyRequest().authenticated(); 
+			.requestMatchers("/index", "/verify").permitAll()
+			.requestMatchers("/css/**", "/js/**", "/webjars/**").permitAll()
+			.requestMatchers("/images/**", "/video/**").permitAll()
+			.requestMatchers("/signup", "/verifyToken").permitAll()
+			.anyRequest().authenticated()
+			.and()
+			.csrf().ignoringRequestMatchers("/signup", "/verifyToken"); 
 		
 		return http.build(); 
 		

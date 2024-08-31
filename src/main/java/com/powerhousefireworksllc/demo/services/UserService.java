@@ -5,7 +5,8 @@ import com.powerhousefireworksllc.demo.DTO.RegistrationDTO;
 import com.powerhousefireworksllc.demo.repositories.UserRepository; 
 import com.powerhousefireworksllc.demo.exceptions.InvalidPasswordException;
 import com.powerhousefireworksllc.demo.exceptions.InvalidUsernameFormatException;
-import com.powerhousefireworksllc.demo.exceptions.InvalidEmailFormatException; 
+import com.powerhousefireworksllc.demo.exceptions.InvalidEmailFormatException;
+import com.powerhousefireworksllc.demo.exceptions.InvalidNameFormatException;
 import com.powerhousefireworksllc.demo.exceptions.EmailAlreadyExistsException; 
 import com.powerhousefireworksllc.demo.exceptions.UsernameAlreadyExistsException; 
 
@@ -51,6 +52,14 @@ public class UserService {
 			
 		} 
 		
+		if(!nameFormatValidator(registrationDTO.getFname()) || !nameFormatValidator(registrationDTO.getLname())) {
+			
+			String message = "First and last name fields must not remain blank."; 
+			
+			throw new InvalidNameFormatException(message); 
+			
+		}
+		
 		// Username format validation
 		if(!usernameValidator(registrationDTO.getUsername())) { 
 			
@@ -95,7 +104,7 @@ public class UserService {
 		user.setEmail(registrationDTO.getEmail()); 
 		user.setUsername(registrationDTO.getUsername()); 
 		user.setPassword(registrationDTO.getPassword()); 
-		user.setToken(registrationDTO.getToken()); 
+		user.setToken(token); 
 		user.setVerified(false); 
 		
 		this.userRepository.save(user); 
@@ -106,6 +115,7 @@ public class UserService {
 	
 	public Boolean verifyUser(String token) {
 		
+		Boolean verified = false; 
 		User user = this.userRepository.findByToken(token); 
 		
 		if(user != null) {
@@ -114,9 +124,11 @@ public class UserService {
 			user.setToken(null); 
 			this.userRepository.save(user); 
 			
+			verified = true; 
+			
 		}
 		
-		return false; 
+		return verified; 
 		
 	} 
 	
@@ -129,7 +141,7 @@ public class UserService {
 			password.matches("^(?=.*[A-Z]).*$"), 
 			password.length() >= 8, 
 			password.matches(".*[0-9].*"), 
-			password.matches(".*[!@#$%^&*()_+\\-=[\\]{};':\"\\\\,.<>/?]"), 
+			password.matches(".*[!@#$%^&*()_+\\-=\\[\\]{};':\"\\\\,.<>/?].*"), 
 			!password.matches(".*\\s.*"), 
 			password.equals(confirm_password)
 		}; 
@@ -151,7 +163,7 @@ public class UserService {
 	
 	public Boolean emailValidator(String email) {
 		
-		String regex = "\\.(com|net|org|edu|gov|mil|biz|info|mobi|name|aero|jobs|museum)$"; 
+		String regex = "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.(com|net|org|edu|gov|mil|biz|info|mobi|name|aero|jobs|museum)$"; 
 		Pattern pattern = Pattern.compile(regex); 
 		Matcher matcher = pattern.matcher(email); 
 		
@@ -163,6 +175,12 @@ public class UserService {
 		
 		return !username.equals(""); 
 		
-	}
+	} 
+	
+	public Boolean nameFormatValidator(String name) {
+		
+		return !name.equals(""); 
+		
+	} 
 	
 }

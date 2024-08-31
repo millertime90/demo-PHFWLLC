@@ -21,7 +21,8 @@ import com.powerhousefireworksllc.demo.services.UserService;
 import com.powerhousefireworksllc.demo.services.EmailService; 
 import com.powerhousefireworksllc.demo.models.User; 
 import com.powerhousefireworksllc.demo.exceptions.EmailAlreadyExistsException; 
-import com.powerhousefireworksllc.demo.exceptions.InvalidEmailFormatException; 
+import com.powerhousefireworksllc.demo.exceptions.InvalidEmailFormatException;
+import com.powerhousefireworksllc.demo.exceptions.InvalidNameFormatException;
 import com.powerhousefireworksllc.demo.exceptions.InvalidPasswordException;
 import com.powerhousefireworksllc.demo.exceptions.InvalidUsernameFormatException;
 import com.powerhousefireworksllc.demo.exceptions.UsernameAlreadyExistsException; 
@@ -52,14 +53,13 @@ public class IndexController {
 		
 		Map<String, String> response = new HashMap<String, String>(); 
 		String token = UUID.randomUUID().toString(); 
+		System.out.println("New user token generated:" + token); 
 		
 		// Validate and save user data 
 		User user = this.userService.registerUser(registrationDTO, token); 
 		
 		response.put("message",  "Form successfully submitted"); 
 		response.put("email", registrationDTO.getEmail()); 
-		
-		System.out.println(token); 
 		
 		// Send verification email 
 		this.emailService.sendVerificationEmail(registrationDTO.getFullName(), registrationDTO.getEmail(), token); 
@@ -87,6 +87,16 @@ public class IndexController {
 		return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST); 
 		
 	} 
+	
+	@ExceptionHandler(InvalidNameFormatException.class)
+	public ResponseEntity<Map<String, String>> handleInvalidNameFormatException(InvalidNameFormatException ex) {
+		
+		Map<String, String> response = new HashMap<>(); 
+		response.put("message", ex.getMessage()); 
+		
+		return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST); 
+		
+	}
 	
 	@ExceptionHandler(InvalidUsernameFormatException.class)
 	public ResponseEntity<Map<String, String>> handleInvalidUsernameFormatException(InvalidUsernameFormatException ex) {

@@ -1,10 +1,12 @@
 // 	VERIFYEMAIL JS 
 
-let token = document.querySelector("#token"); 
+let token = document.querySelector("#token").value; 
 let submitBtn = document.querySelector("#verifyForm button"); 
 let isProcessing = false; 
 
-function verifyEmail() { 
+function verifyEmail(e) { 
+	
+	e.preventDefault(); 
 	
 	if(isProcessing) { return; } 
 	isProcessing = true; 
