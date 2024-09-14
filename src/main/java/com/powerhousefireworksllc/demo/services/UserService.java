@@ -61,7 +61,7 @@ public class UserService {
 		}
 		
 		// Username format validation
-		if(!usernameValidator(registrationDTO.getUsername())) { 
+		if(!usernameValidator(registrationDTO.getSignUpUsername())) { 
 			
 			String message = "Username field cannot be blank."; 
 			
@@ -74,7 +74,7 @@ public class UserService {
 		 * possible existing username 
 		 */ 
 		
-		if(this.userRepository.existsByUsername(registrationDTO.getUsername())) {
+		if(this.userRepository.existsByUsername(registrationDTO.getSignUpUsername())) {
 			
 			String message = "Username already exists"; 
 			
@@ -102,7 +102,7 @@ public class UserService {
 		user.setFname(registrationDTO.getFname()); 
 		user.setLname(registrationDTO.getLname()); 
 		user.setEmail(registrationDTO.getEmail()); 
-		user.setUsername(registrationDTO.getUsername()); 
+		user.setUsername(registrationDTO.getSignUpUsername()); 
 		user.setPassword(registrationDTO.getPassword()); 
 		user.setToken(token); 
 		user.setVerified(false); 

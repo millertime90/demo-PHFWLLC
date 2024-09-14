@@ -7,7 +7,7 @@ public class RegistrationDTO {
 	private String fname; 
 	private String lname; 
 	private String email; 
-	private String username; 
+	private String signUpUsername; 
 	private String password; 
 	private String confirm_password; 
 	private String token; 
@@ -56,15 +56,15 @@ public class RegistrationDTO {
 		
 	} 
 	
-	public String getUsername() {
+	public String getSignUpUsername() {
 		
-		return this.username; 
+		return this.signUpUsername; 
 		
 	} 
 	
-	public void setUserName(String username) {
+	public void setSignUpUserName(String username) {
 		
-		this.username = username; 
+		this.signUpUsername = username; 
 		
 	} 
 	

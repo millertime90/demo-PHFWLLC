@@ -281,7 +281,7 @@ $(document).ready(function() {
 			fname: $("#signupForm input[name='fname']").val(), 
 			lname: $("#signupForm input[name='lname']").val(), 
 			email: $("#signupForm input[name='email']").val(), 
-			username: $("#signupForm input[name='username']").val(), 
+			signUpUsername: $("#signupForm input[name='signUpUsername']").val(), 
 			password: $("#signupForm input[name='password']").val(), 
 			confirm_password: $("#signupForm input[name='confirm_password']").val() 
 		}; 
