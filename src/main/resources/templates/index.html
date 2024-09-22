@@ -31,10 +31,8 @@
 				</a>
 			</div>
 			<div class="col-sm-4 d-flex flex-column mt-auto header_text">
-				<p th:if="${param.loginSuccess}" 
-				   class="text-center"
-				>
-					<i th:text="${#authentication.principal.username}"></i>
+				<p id="authenticatedUser">
+					<i></i>
 				</p>
 				<h5 class="text-center">ORDER HERE, PICK UP AT <i>PHFWLLC ADDRESS</i></h5> 
 			</div> 

@@ -25,7 +25,7 @@ public class CustomUserDetailsService implements UserDetailsService {
 			throw new UsernameNotFoundException("User not found"); 
 			
 		} 
-		
+		System.out.println("Stored salted/hashed password: " + user.getPassword()); 
 		return new CustomUserDetails(user); 
 		
 	}

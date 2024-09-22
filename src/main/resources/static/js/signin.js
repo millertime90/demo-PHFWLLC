@@ -7,8 +7,8 @@ $(document).ready(function() {
 		ev.preventDefault(); 
 		
 		let loginData = {
-			username: $("input[name='username']").val(), 
-			password: $("input[name='password']").val() 
+			username: $("#signInForm input[name='username']").val(), 
+			password: $("#signInForm input[name='password']").val() 
 		}; 
 		
 		let csrfToken = document.querySelector("meta[name='_csrf']").getAttribute("content"); 
@@ -16,18 +16,27 @@ $(document).ready(function() {
 		
 		$.ajax({
 			type: "POST", 
-			url: "/perform_login", 
+		
+url: "/perform_login", 
 			data: loginData, 
 			contentType: "application/x-www-form-urlencoded; charset=UTF-8", 
 			headers: { [csrfHeaderName]: csrfToken }, 
-			success: function(response) {
+			success: function(response) { 
+				
+				if(response != null) {
+					
+					console.log(response); 
+					
+				}
 				
 				if(response.success) {
 					
 					let successString = "Valid user credentials entered; login successful!"; 
 					console.log(successString); 
 					alert(successString); 
-					window.location.href = "/index?loginSuccess=true"; 
+					
+					$("#authenticatedUser i").text("Welcome " + response.username); 
+					$("#signInModal").modal("hide"); 
 					
 				} 
 				else {
@@ -35,7 +44,6 @@ $(document).ready(function() {
 					let failString = "Invalid user credentials entered; login unsuccessful!"; 
 					console.log(failString); 
 					alert(failString); 
-					window.location.href = "/index?loginError=true"; 
 					
 				}
 				
