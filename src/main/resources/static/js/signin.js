@@ -2,6 +2,17 @@
 
 $(document).ready(function() {
 	
+	const urlParams = new URLSearchParams(window.location.search); 
+	let paramBool;
+	if(urlParams.get("verified") !== null) {
+		
+		paramBool = urlParams.get("verified") == "true" ? true : false; 
+		
+	} 
+	
+	$("#signInModal").modal(paramBool ? "show" : "hide"); 
+	$("#signupModal").modal(paramBool ? "hide" : "show"); 
+	
 	$("#signInForm").on("submit", function(ev) {
 		
 		ev.preventDefault(); 
@@ -16,8 +27,7 @@ $(document).ready(function() {
 		
 		$.ajax({
 			type: "POST", 
-		
-url: "/perform_login", 
+			url: "/perform_login", 
 			data: loginData, 
 			contentType: "application/x-www-form-urlencoded; charset=UTF-8", 
 			headers: { [csrfHeaderName]: csrfToken }, 

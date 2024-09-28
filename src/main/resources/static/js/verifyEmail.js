@@ -1,28 +1,61 @@
 // 	VERIFYEMAIL JS 
 
-let token = document.querySelector("#token").value; 
-let submitBtn = document.querySelector("#verifyForm button"); 
-let isProcessing = false; 
+$(document).ready(function() {
 
-function verifyEmail(e) { 
-	
-	e.preventDefault(); 
-	
-	if(isProcessing) { return; } 
-	isProcessing = true; 
-	
-	fetch(`/verifyToken?token=${token}`, { method: "GET" })
-	.then(response => response.text())
-	.then(data => { 
-		alert(data);
-		isProcessing = false; 
-	})
-	.catch(error => { 
-		console.error("Error:", error);
-		isProcessing = false; 
-	}); 
-	
-} 
+	let redirectModal = document.querySelector("#redirectModal"); 
+	let secondElem = document.querySelector("#s"); 
+	let token = document.querySelector("#token").value; 
+	let submitBtn = document.querySelector("#verifyForm button"); 
+	let isProcessing = false; 
 
-submitBtn.addEventListener("click", verifyEmail); 
-submitBtn.addEventListener("touchend", verifyEmail); 
+	function verifyEmail(e) { 
+	
+		e.preventDefault(); 
+	
+		if(isProcessing) { return; } 
+		isProcessing = true; 
+	
+		fetch(`/verifyToken?token=${token}`, { method: "GET" })
+		.then(response => response.json())
+		.then(data => { 
+			
+			let redirectInterval = function(elem) {
+				
+				let dur = 10; 
+				
+				let _interval = window.setInterval(elem => { 
+					
+					elem.textContent -= dur; 
+					if(elem.textContent == "0") {
+						
+						window.clearInterval(_interval); 
+						window.location.href = data.redirectURL; 
+						
+					}
+					
+				}, 1000); 
+				
+			}; 
+			
+			$(redirectModal).modal("show"); 
+			redirectModal.querySelector("#redirectModalLabel").textContent = data.message; 
+			redirectModal.querySelector("a").textContent = data.redirectURL; 
+			redirectModal.querySelector("#bodyText1").textContent = data.bodyText.split(", ")[0]; 
+			redirectModal.querySelector("#bodyText2").textContent = data.bodyText.split(", ")[1]; 
+			redirectInterval(secondElem); 
+			isProcessing = false; 
+	
+		})
+		.catch(error => { 
+			
+			console.error("Error:", error);
+			isProcessing = false; 
+	
+		}); 
+	
+	} 
+
+	submitBtn.addEventListener("click", verifyEmail); 
+	submitBtn.addEventListener("touchend", verifyEmail); 
+
+}); 

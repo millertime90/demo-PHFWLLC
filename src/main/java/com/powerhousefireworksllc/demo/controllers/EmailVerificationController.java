@@ -5,9 +5,13 @@ import com.powerhousefireworksllc.demo.services.UserService;
 import org.springframework.stereotype.Controller; 
 import org.springframework.web.bind.annotation.GetMapping; 
 import org.springframework.web.bind.annotation.RequestParam; 
-import org.springframework.web.bind.annotation.ResponseBody; 
-import org.springframework.beans.factory.annotation.Autowired; 
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.servlet.ModelAndView; 
 import org.springframework.http.ResponseEntity; 
 import org.springframework.http.HttpStatus; 
@@ -17,6 +21,9 @@ public class EmailVerificationController {
 	
 	@Autowired
 	private UserService userService; 
+	
+	@Value("${app.base.url")
+	private String baseURL; 
 	
 	@GetMapping({"/", "/verify"})
 	public ModelAndView getVerifyView(@RequestParam("token") String token) {
@@ -29,24 +36,31 @@ public class EmailVerificationController {
 	
 	@GetMapping({"/", "/verifyToken"})
 	@ResponseBody
-	public ResponseEntity<String> verifyEmail(@RequestParam("token") String token) {
+	public ResponseEntity<Map<String, String>> verifyEmail(@RequestParam("token") String token) {
 		
 		System.out.println("`verifyEmail` invoked"); 
 		
+		Map<String, String> response = new HashMap<>(); 
 		Boolean isVerified = this.userService.verifyUser(token); 
 		System.out.println("User exists by token (" + token + "): " + isVerified); 
 		
 		String verifySuccess = "Email verified successfully. Your account is now activated."; 
-		String verifyUnsuccess = "Invalid or expired token."; 
+		String verifyUnsuccess = "Invalid or expired token. Recreate account."; 
 		
 		if(isVerified) {
 			
-			return new ResponseEntity<>(verifySuccess, HttpStatus.OK); 
+			response.put("message", verifySuccess); 
+			response.put("bodyText", "login, login"); 
+			response.put("redirectURL", baseURL + "/index?verified=true"); 
+			return new ResponseEntity<>(response, HttpStatus.OK); 
 			
 		} 
 		else {
 			
-			return new ResponseEntity<>(verifyUnsuccess, HttpStatus.BAD_REQUEST); 
+			response.put("message", verifyUnsuccess); 
+			response.put("bodyText", "recreate account, registration"); 
+			response.put("redirectURL", baseURL + "/index?verified=false"); 
+			return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST); 
 			
 		}
 		
