@@ -39,7 +39,7 @@ $(document).ready(function() {
 			
 			$(redirectModal).modal("show"); 
 			redirectModal.querySelector("#redirectModalLabel").textContent = data.message; 
-			redirectModal.querySelector("a").textContent = data.redirectURL; 
+			redirectModal.querySelector("a").setAttribute("href", data.redirectURL); 
 			redirectModal.querySelector("#bodyText1").textContent = data.bodyText.split(", ")[0]; 
 			redirectModal.querySelector("#bodyText2").textContent = data.bodyText.split(", ")[1]; 
 			redirectInterval(secondElem); 
