@@ -3,15 +3,16 @@
 $(document).ready(function() {
 	
 	const urlParams = new URLSearchParams(window.location.search); 
-	let paramBool;
+	let paramBool; 
+	
+	console.log(urlParams.get("verified")); 
 	if(urlParams.get("verified") !== null) {
 		
 		paramBool = urlParams.get("verified") == "true" ? true : false; 
+		$("#signInModal").modal(paramBool ? "show" : "hide"); 
+		$("#signupModal").modal(paramBool ? "hide" : "show"); 
 		
 	} 
-	
-	$("#signInModal").modal(paramBool ? "show" : "hide"); 
-	$("#signupModal").modal(paramBool ? "hide" : "show"); 
 	
 	$("#signInForm").on("submit", function(ev) {
 		

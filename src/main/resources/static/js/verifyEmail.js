@@ -23,15 +23,16 @@ $(document).ready(function() {
 				
 				let dur = 10; 
 				
-				let _interval = window.setInterval(elem => { 
+				let _interval = window.setInterval(function() { 
 					
-					elem.textContent -= dur; 
-					if(elem.textContent == "0") {
+					dur -= 1; 
+					elem.textContent = dur; 
+					if(dur < 1) {
 						
 						window.clearInterval(_interval); 
 						window.location.href = data.redirectURL; 
 						
-					}
+					} 
 					
 				}, 1000); 
 				

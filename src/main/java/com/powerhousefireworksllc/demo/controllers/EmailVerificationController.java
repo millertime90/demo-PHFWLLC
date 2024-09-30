@@ -22,7 +22,7 @@ public class EmailVerificationController {
 	@Autowired
 	private UserService userService; 
 	
-	@Value("${app.base.url")
+	@Value("${app.base.url}")
 	private String baseURL; 
 	
 	@GetMapping({"/", "/verify"})
@@ -39,6 +39,7 @@ public class EmailVerificationController {
 	public ResponseEntity<Map<String, String>> verifyEmail(@RequestParam("token") String token) {
 		
 		System.out.println("`verifyEmail` invoked"); 
+		System.out.println("APP BASE URL is: " + this.baseURL); 
 		
 		Map<String, String> response = new HashMap<>(); 
 		Boolean isVerified = this.userService.verifyUser(token); 
@@ -51,7 +52,7 @@ public class EmailVerificationController {
 			
 			response.put("message", verifySuccess); 
 			response.put("bodyText", "login, login"); 
-			response.put("redirectURL", baseURL + "/index?verified=true"); 
+			response.put("redirectURL", this.baseURL + "/index?verified=true"); 
 			return new ResponseEntity<>(response, HttpStatus.OK); 
 			
 		} 
@@ -59,7 +60,7 @@ public class EmailVerificationController {
 			
 			response.put("message", verifyUnsuccess); 
 			response.put("bodyText", "recreate account, registration"); 
-			response.put("redirectURL", baseURL + "/index?verified=false"); 
+			response.put("redirectURL", this.baseURL + "/index?verified=false"); 
 			return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST); 
 			
 		}
