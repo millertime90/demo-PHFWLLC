@@ -46,8 +46,11 @@ $(document).ready(function() {
 					console.log(successString); 
 					alert(successString); 
 					
+					$("#signInForm")[0].reset(); 
 					$("#authenticatedUser i").text("Welcome " + response.username); 
 					$("#signInModal").modal("hide"); 
+					$("#headerSignInBtn").css({ display: "none" }); 
+					$("#headerLogoutBtn").css({ display: "inline-block"}); 
 					
 				} 
 				else {

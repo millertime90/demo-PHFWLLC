@@ -36,7 +36,7 @@
 				</p>
 				<h5 class="text-center">ORDER HERE, PICK UP AT <i>PHFWLLC ADDRESS</i></h5> 
 			</div> 
-			<nav class="col-sm-4 navbar navbar-expand-md navbar-dark d-flex flex-column">
+			<nav class="col-sm-4 navbar navbar-expand-md navbar-dark">
 				<button class="navbar-toggler ml-auto" type="button" data-toggle="collapse"
 						data-target="#navOptions" aria-controls="navOptions" aria-expanded="false" 
 						aria-label="Toggle navigation" 
@@ -44,7 +44,7 @@
 					<span class="navbar-toggler-icon text-light"></span>
 				</button>
 				<div class="collapse navbar-collapse" id="navOptions">
-					<ul class="navbar-nav mr-auto">
+					<ul class="navbar-nav mr-auto pl-3">
 						<li class="nav-item">
 							<a class="nav-link text-white" href="#about">About</a>
 							<a class="nav-link text-white" href="#contact">Contact</a>
@@ -71,6 +71,7 @@
 						</li> 
 						<li class="nav-item">
 							<button id="headerSignInBtn" class="btn text-white">Sign-in</button>
+							<button id="headerLogoutBtn" class="btn text-white" style="display:none;">Log-Out</button>
 						</li> 
 						<li class="nav-item signupBtn">
 							<button id="headerSignupBtn" class="btn text-white">Sign-up</button>
@@ -502,7 +503,7 @@
 							<fieldset class="col-sm-12 d-flex flex-column">
 								<div class="form-group">
 									<label for="username">
-										Username (or Email Address):
+										Username:
 										<i style="color:red;">*</i>
 									</label>
 									<input id="username" class="form-control" name="username"

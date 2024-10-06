@@ -34,7 +34,7 @@ public class SecurityConfig {
                 .requestMatchers("/index", "/verify").permitAll()
                 .requestMatchers("/css/**", "/js/**", "/webjars/**").permitAll()
                 .requestMatchers("/images/**", "/video/**").permitAll()
-                .requestMatchers("/signup", "/verifyToken", "/perform_login").permitAll()
+                .requestMatchers("/signup", "/verifyToken", "/perform_login", "/perform_logout").permitAll()
                 .anyRequest().authenticated())
                 .formLogin(login -> login
                 		.loginPage("/index")
@@ -71,7 +71,7 @@ public class SecurityConfig {
                         .logoutSuccessUrl("/index")
                         .invalidateHttpSession(true)
                         .deleteCookies("JSESSIONID"))
-                .csrf(csrf -> csrf.ignoringRequestMatchers("/signup", "/verifyToken")); 
+                .csrf(csrf -> csrf.ignoringRequestMatchers("/signup", "/verifyToken", "/perform_logout")); 
 		
 		return http.build(); 
 		

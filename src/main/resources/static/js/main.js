@@ -23,6 +23,34 @@ $(document).ready(function() {
 		
 		$(signinModal).modal("show"); 
 		
+	} 
+	
+	function logout() {
+		
+		let csrfToken = document.querySelector("meta[name='_csrf']").getAttribute("content"); 
+		let csrfHeaderName = document.querySelector("meta[name='_csrf_header']").getAttribute("content"); 
+		
+		fetch("/perform_logout", {
+			method: "POST", 
+			headers: { 
+				"Content-Type": "application/x-www-form-urlencoded", 
+				[csrfHeaderName]: csrfToken
+			}
+		})
+		.then(response => {
+			
+			console.log(response.status); 
+			if(response.ok) {
+				
+				window.alert("You are now logged out."); 
+				$("#authenticatedUser i").text(""); 
+				$("#headerSignInBtn").css({ display: "inline-block" }); 
+				$("#headerLogoutBtn").css({ display: "none"}); 
+				
+			} 
+			
+		}); 
+		
 	}
 	
 	[
@@ -37,9 +65,13 @@ $(document).ready(function() {
 	}); 
 	
 	let headerSignInBtn = document.querySelector("#headerSignInBtn"); 
+	let headerLogoutBtn = document.querySelector("#headerLogoutBtn"); 
 	
 	headerSignInBtn.addEventListener("click", toSigninModal); 
 	headerSignInBtn.addEventListener("touchend", toSigninModal); 
+	
+	headerLogoutBtn.addEventListener("click", logout); 
+	headerLogoutBtn.addEventListener("touchend", logout); 
 
 	let cr = document.querySelector("#cr"); 
 	let d = new Date(); 

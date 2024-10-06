@@ -51,7 +51,7 @@ public class IndexController {
 	@ResponseBody
 	public ResponseEntity<Map<String, String>> register(@RequestBody RegistrationDTO registrationDTO) throws Exception {
 		
-		Map<String, String> response = new HashMap<String, String>(); 
+		Map<String, String> response = new HashMap<>(); 
 		String token = UUID.randomUUID().toString(); 
 		System.out.println("New user token generated:" + token); 
 		
