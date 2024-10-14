@@ -53,7 +53,7 @@
 } 
 
 /* Signup Form Regs */ 
-#passwordStrengthIndicator-container {
+/*#passwordStrengthIndicator-container {
 	height: 0.5em; 
 	visibility: hidden; 
 } 
@@ -69,10 +69,10 @@
 
 .bg-successPlus {
 	background-color: green; 
-} 
+} migrating to MAIN CSS */
 
 /* Signup Response Modal Regs */ 
-#emailVerificationModal .modal-header {
+/*#emailVerificationModal .modal-header {
 	background-color: rgb(21, 20, 16); 
 	color: white; 
 } 
@@ -85,4 +85,4 @@
 
 #emailVerificationModal .close {
 	color: red; 
-} 
+} migrating to MAIN CSS */ 

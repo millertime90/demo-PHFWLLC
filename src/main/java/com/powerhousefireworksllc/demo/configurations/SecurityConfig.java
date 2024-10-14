@@ -31,10 +31,11 @@ public class SecurityConfig {
 	public SecurityFilterChain customSecurityFilterChain(HttpSecurity http) throws Exception {
 
         http.authorizeHttpRequests(requests -> requests
-                .requestMatchers("/index", "/verify").permitAll()
+                .requestMatchers("/index", "/verify", "/password-reset").permitAll()
                 .requestMatchers("/css/**", "/js/**", "/webjars/**").permitAll()
                 .requestMatchers("/images/**", "/video/**").permitAll()
-                .requestMatchers("/signup", "/verifyToken", "/perform_login", "/perform_logout").permitAll()
+                .requestMatchers("/signup", "/perform_login", "/perform_logout", "/forgot-username").permitAll()
+                .requestMatchers("/verifyToken", "/reset-password").permitAll()
                 .anyRequest().authenticated())
                 .formLogin(login -> login
                 		.loginPage("/index")
@@ -71,7 +72,7 @@ public class SecurityConfig {
                         .logoutSuccessUrl("/index")
                         .invalidateHttpSession(true)
                         .deleteCookies("JSESSIONID"))
-                .csrf(csrf -> csrf.ignoringRequestMatchers("/signup", "/verifyToken", "/perform_logout")); 
+                .csrf(csrf -> csrf.ignoringRequestMatchers("/signup", "/verifyToken", "/perform_logout", "/password-reset")); 
 		
 		return http.build(); 
 		

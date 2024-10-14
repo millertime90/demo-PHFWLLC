@@ -7,8 +7,10 @@ import com.powerhousefireworksllc.demo.exceptions.InvalidPasswordException;
 import com.powerhousefireworksllc.demo.exceptions.InvalidUsernameFormatException;
 import com.powerhousefireworksllc.demo.exceptions.InvalidEmailFormatException;
 import com.powerhousefireworksllc.demo.exceptions.InvalidNameFormatException;
-import com.powerhousefireworksllc.demo.exceptions.EmailAlreadyExistsException; 
-import com.powerhousefireworksllc.demo.exceptions.UsernameAlreadyExistsException; 
+import com.powerhousefireworksllc.demo.exceptions.EmailAlreadyExistsException;
+import com.powerhousefireworksllc.demo.exceptions.EmailDoesNotExistException;
+import com.powerhousefireworksllc.demo.exceptions.UsernameAlreadyExistsException;
+import com.powerhousefireworksllc.demo.exceptions.UsernameDoesNotExistException;
 
 import org.springframework.stereotype.Service; 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,7 +36,6 @@ public class UserService {
 		if(!emailValidator(registrationDTO.getEmail())) {
 			
 			String message = "Invalid email (format)"; 
-			
 			throw new InvalidEmailFormatException(message); 
 			
 		} 
@@ -47,7 +48,6 @@ public class UserService {
 		if(this.userRepository.existsByEmail(registrationDTO.getEmail())) {
 			
 			String message = "Email already exists"; 
-			
 			throw new EmailAlreadyExistsException(message); 
 			
 		} 
@@ -55,7 +55,6 @@ public class UserService {
 		if(!nameFormatValidator(registrationDTO.getFname()) || !nameFormatValidator(registrationDTO.getLname())) {
 			
 			String message = "First and last name fields must not remain blank."; 
-			
 			throw new InvalidNameFormatException(message); 
 			
 		}
@@ -64,7 +63,6 @@ public class UserService {
 		if(!usernameValidator(registrationDTO.getSignUpUsername())) { 
 			
 			String message = "Username field cannot be blank."; 
-			
 			throw new InvalidUsernameFormatException(message); 
 			
 		}
@@ -77,7 +75,6 @@ public class UserService {
 		if(this.userRepository.existsByUsername(registrationDTO.getSignUpUsername())) {
 			
 			String message = "Username already exists"; 
-			
 			throw new UsernameAlreadyExistsException(message); 
 			
 		} 
@@ -85,8 +82,7 @@ public class UserService {
 		// Password Validation 
 		if(!passwordValidator(registrationDTO.getPassword(), registrationDTO.getConfirm_password())) { 
 					
-			String message = "Invalid password due to unmet requirements."; 
-					
+			String message = "Invalid password due to unmet requirements"; 		
 			throw new InvalidPasswordException(message); 
 					
 		} 
@@ -131,6 +127,73 @@ public class UserService {
 		return verified; 
 		
 	} 
+	
+	public User verifyUserByEmail(String emailAddress) throws Exception {
+		
+		User user = this.userRepository.findByEmail(emailAddress); 
+		if(user == null) {
+			
+			String message = 
+					"An account registered with this email address entered:\n" + 
+					emailAddress + " (check for typos)\n" + 
+					"does not exist."; 
+			
+			throw new EmailDoesNotExistException(message); 
+			
+		} 
+		else {
+			
+			return user; 
+			
+		}
+		
+	}
+	
+	public User getUserByUsername(String username) throws Exception {
+		
+		User user = this.userRepository.findByUsername(username); 
+		
+		if(user == null) {
+			
+			String message = 
+				"Password reset failed\n" + 
+				"Username, " + username + " does not exist.\n" + 
+				"Please recreate account"; 
+			
+			throw new UsernameDoesNotExistException(message); 
+			
+		}
+		else {
+			
+			return user; 
+			
+		}
+		
+	}
+	
+	public void updatePassword(User user, String password, String confirm_password) throws Exception {
+		
+		if(passwordValidated(password, confirm_password)) {
+		
+			String hashedPassword = this.passwordEncoder.encode(password); 
+			user.setPassword(hashedPassword); 
+			this.userRepository.save(user); 
+			
+		} 
+		else {
+			
+			String message = "Invalid password due to unmet requirements"; 
+			throw new InvalidPasswordException(message); 
+			
+		}
+		
+	}
+	
+	public Boolean passwordValidated(String password, String confirm_password) {
+		
+		return passwordValidator(password, confirm_password); 
+		
+	}
 	
 	public Boolean passwordValidator(String password, String confirm_password) {
 		

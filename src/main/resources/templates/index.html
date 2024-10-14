@@ -81,7 +81,12 @@
 			</nav>
 		</header>
 		<div class="container-lg bg-dark px-0">
-			<h2 class="text-center text-light pt-3" style="text-decoration:underline;"><i>Featured Merch</i></h2>
+			<div class="text-center text-light d-flex justify-content-between align-items-center pt-3">
+				<h2 class="m-auto" style="text-decoration:underline;"><i>Featured Merch</i></h2>
+				<button class="btn ml-auto">
+					<i class="fas fa-shopping-cart"></i>
+				</button>
+			</div>
 			<div id="productCarousel" class="carousel slide bg-dark" data-ride="carousel"
 				 data-interval="10000"
 			>
@@ -356,7 +361,7 @@
 				Built and maintained by Scott Miller
 			</p>
 		</footer>
-		<!-- The Modal -->
+		<!-- The Modals -->
 		<div class="modal" id="adModal">
 			<div class="modal-dialog">
 				<div class="modal-content">
@@ -522,6 +527,10 @@
 								<div class="form-group">
 									<button id="signInBtn" type="submit" class="btn btn-block btn-success">Sign-In</button>
 								</div>
+								<p>
+									Forgot username? Click <a id="getRetrieveUsernameModal" href="#">here</a> to retrieve<br />
+									Forgot password? Click <a id="getPasswordResetModal" href="#">here</a> to reset
+								</p>
 								<h5>OR</h5>
 							</fieldset>
 							<fieldset class="col-sm-12">
@@ -539,6 +548,56 @@
 						</form>
 					</div>
 				</div>
+			</div>
+		</div>
+		<div class="modal fade" id="retrieveUsernameModal">
+			<div class="modal-dialog">
+				<form style="border:2px solid white;border-radius:10px;">
+					<div class="modal-content bg-dark text-white">
+						<div class="modal-header">
+							<button class="close" type="button" data-dismiss="modal">
+								<span aria-hidden="true" style="color:red;">&times;</span>
+							</button>
+						</div>
+						<div class="modal-body">
+							Enter email address you have used to sign up.<br />
+							When submitted, your username will be displayed.<br />
+							<label for="retrieveAtEmail" class="text-info">Email Address: </label>
+							<input id="retrieveAtEmail" class="form-control" name="retrieveAtEmail" 
+								   type="email" required 
+							/> 
+						</div>
+						<div class="modal-footer">
+							<button id="retrieveUsernameBtn" class="btn btn-info text-light" type="button">Retrieve Username</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+		<div class="modal fade" id="sendResetPasswordLinkModal">
+			<div class="modal-dialog">
+				<form style="border:2px solid white;border-radius:10px;">
+					<div class="modal-content bg-dark text-white">
+						<div class="modal-header">
+							<button class="close" type="button" data-dismiss="modal">
+								<span aria-hidden="true" style="color:red;">&times;</span>
+							</button>
+						</div>
+						<div class="modal-body">
+							Enter email address you have used to sign up.<br />
+							When submitted, an email with a password reset link will be sent to your inbox.<br /> 
+							Check your spam box in case you do not see it in your inbox with the subject:<br />
+							<b>WC - Password Reset Request Received</b>
+							<label id="resetLinkToEmail" class="text-info">Email Address: </label>
+							<input id="resetLinkToEmail" class="form-control" name="resetLinkToEmail"
+								   type="email" required
+							/>
+						</div>
+						<div class="modal-footer">
+							<button id="sendPasswordResetLinkBtn" class="btn btn-info text-light" type="button">Send Password Reset Link</button>
+						</div>
+					</div>
+				</form>
 			</div>
 		</div>
 		<div id="emailVerificationModal" class="modal fade" tabindex="-1"
