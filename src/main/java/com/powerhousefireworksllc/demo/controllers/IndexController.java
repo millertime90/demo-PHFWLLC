@@ -19,7 +19,8 @@ import java.util.UUID;
 
 import com.powerhousefireworksllc.demo.DTO.RegistrationDTO; 
 import com.powerhousefireworksllc.demo.services.UserService; 
-import com.powerhousefireworksllc.demo.services.EmailService; 
+import com.powerhousefireworksllc.demo.services.EmailService;
+import com.powerhousefireworksllc.demo.services.PasswordResetTokenService;
 import com.powerhousefireworksllc.demo.models.User; 
 import com.powerhousefireworksllc.demo.exceptions.EmailAlreadyExistsException;
 import com.powerhousefireworksllc.demo.exceptions.EmailDoesNotExistException;
@@ -38,6 +39,9 @@ public class IndexController {
 	
 	@Autowired
 	private EmailService emailService; 
+	
+	@Autowired
+	private PasswordResetTokenService passwordResetTokenService; 
 	
 	@GetMapping({"/", "/index"})
 	public ModelAndView getIndex() { 
@@ -70,9 +74,9 @@ public class IndexController {
 		
 	} 
 	
-	@GetMapping({"/", "forgot-username"})
+	@GetMapping(value = {"/", "/forgot-username"})
 	@ResponseBody
-	public ResponseEntity<Map<String, String>> retrieveUsername(@RequestParam String emailAddress) throws Exception {
+	public ResponseEntity<Map<String, String>> retrieveUsername(@RequestParam("emailAddress") String emailAddress) throws Exception {
 		
 		Map<String, String> response = new HashMap<>(); 
 		User user = this.userService.verifyUserByEmail(emailAddress); 
@@ -84,16 +88,19 @@ public class IndexController {
 		
 	}
 	
-	@GetMapping({"/", "forgot-password"})
+	@PostMapping({"/", "/forgot-password"})
 	@ResponseBody
-	public ResponseEntity<Map<String, String>> emailPasswordResetLink(@RequestParam String emailAddress) throws Exception {
+	public ResponseEntity<Map<String, String>> emailPasswordResetLink(@RequestBody Map<String, String> singleEntryMap) throws Exception {
 		
 		Map<String, String> response = new HashMap<>(); 
+		String emailAddress = singleEntryMap.get("emailAddress"); 
 		User user = this.userService.verifyUserByEmail(emailAddress); 
 		String userEmailAddress = user.getEmail(); 
+		String pwdResetTokenValue = UUID.randomUUID().toString(); 
 		String message = "Password reset link sent to " + userEmailAddress; 
 		
-		this.emailService.sendPasswordResetLink(user.getFullName(), user.getUsername(), userEmailAddress); 
+		this.passwordResetTokenService.storePasswordResetToken(user, pwdResetTokenValue); 
+		this.emailService.sendPasswordResetLink(user.getFullName(), user.getUsername(), pwdResetTokenValue, userEmailAddress); 
 		response.put("message", message); 
 		
 		return new ResponseEntity<>(response, HttpStatus.OK); 

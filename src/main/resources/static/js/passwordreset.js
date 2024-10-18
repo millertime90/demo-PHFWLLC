@@ -146,7 +146,7 @@ $(document).ready(function() {
 		let csrfHeaderName = document.querySelector("meta[name='_csrf_header']").getAttribute("content"); 
 
         $.ajax({
-            url: "/reset-password?username=" + $("#username").val(),
+            url: "/reset-password?username=" + $("#username").val() + "&token=" + $("#token").val(),
             type: "PATCH",
             contentType: "application/json",
             data: JSON.stringify(formData),

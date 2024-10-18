@@ -576,7 +576,7 @@
 		</div>
 		<div class="modal fade" id="sendResetPasswordLinkModal">
 			<div class="modal-dialog">
-				<form style="border:2px solid white;border-radius:10px;">
+				<form style="border:2px solid white;border-radius:10px;" action="/forgot-password" method="POST">
 					<div class="modal-content bg-dark text-white">
 						<div class="modal-header">
 							<button class="close" type="button" data-dismiss="modal">
@@ -594,7 +594,7 @@
 							/>
 						</div>
 						<div class="modal-footer">
-							<button id="sendPasswordResetLinkBtn" class="btn btn-info text-light" type="button">Send Password Reset Link</button>
+							<button id="sendPasswordResetLinkBtn" class="btn btn-info text-light" type="submit">Send Password Reset Link</button>
 						</div>
 					</div>
 				</form>

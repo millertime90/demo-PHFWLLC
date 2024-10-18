@@ -34,7 +34,8 @@ public class SecurityConfig {
                 .requestMatchers("/index", "/verify", "/password-reset").permitAll()
                 .requestMatchers("/css/**", "/js/**", "/webjars/**").permitAll()
                 .requestMatchers("/images/**", "/video/**").permitAll()
-                .requestMatchers("/signup", "/perform_login", "/perform_logout", "/forgot-username").permitAll()
+                .requestMatchers("/signup", "/perform_login", "/perform_logout").permitAll()
+                .requestMatchers("/forgot-username", "/forgot-password").permitAll()
                 .requestMatchers("/verifyToken", "/reset-password").permitAll()
                 .anyRequest().authenticated())
                 .formLogin(login -> login

@@ -34,10 +34,10 @@ public class EmailService {
 		
 	}
 	
-	public void sendPasswordResetLink(String name, String username, String email) {
+	public void sendPasswordResetLink(String name, String username, String token, String email) {
 		
 		SimpleMailMessage message = new SimpleMailMessage(); 
-		String passwordResetLink = baseURL + "/password-reset?username=" + username; 
+		String passwordResetLink = baseURL + "/password-reset?username=" + username + "&token=" + token; 
 		String messageBody = 
 				"Hello " + name + "\n\n" +
 				"You are receiving this email message to inform that a request\n" + 

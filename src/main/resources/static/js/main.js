@@ -106,9 +106,12 @@ $(document).ready(function() {
 	
 	function sendPasswordResetLink() {
 		
-		fetch("/forgot-password?emailAddress=" + encodeURIComponent($("#sendResetPasswordLinkModal input[name='resetLinkToEmail']").val()), {
-			method: "GET", 
-			headers: { "Accept": "application/json" }
+		fetch("/forgot-password", {
+			method: "POST", 
+			headers: { "Accept": "application/json" },
+			body: JSON.stringify({ 
+				emailAddress: $("#sendResetPasswordLinkModal input[name='resetLinkToEmail']").val()
+			})
 		})
 		.then(response => {
 			
