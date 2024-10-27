@@ -1,0 +1,158 @@
+<!-- TERMSOFSERVICE HTML --> 
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<title>Terms of Service</title>
+		<meta name="viewport" 
+			  content="width=device-width, initial-scale=1.0" 
+		/>
+		<meta name="_csrf" th:content="${_csrf.token}" />
+		<meta name="_csrf_header" th:content="${_csrf.headerName}" />
+		<link rel="stylesheet" href="/webjars/bootstrap/4.6.0/css/bootstrap.min.css" /> 
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+		<link rel="stylesheet" href="/css/main.css" /> 
+		<!--<link rel="stylesheet" href="/css/index.css" />
+		<link rel="stylesheet" href="/css/carousel.css" /> 
+		<link rel="stylesheet" href="/css/bgimgs.css" /> -->
+		<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png" />
+		<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png" />
+		<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png" />
+		<link rel="manifest" href="/images/site.webmanifest" />
+	</head> 
+	
+	<body class="bg-dark">
+		<header class="header row">
+			<div class="col-sm-4">
+				<a href="#">
+					<img class="header_logo" type="image/png" src="/images/android-chrome-192x192.png"
+						 alt="WHISTLIN'COOTERS LOGO" 
+					/>
+				</a>
+			</div>
+			<div class="col-sm-4 d-flex flex-column mt-auto header_text">
+				<p id="authenticatedUser">
+					<i></i>
+				</p>
+				<h5 class="text-center text-light">ORDER HERE, PICK UP AT <i>PHFWLLC ADDRESS</i></h5> 
+			</div> 
+			<nav class="col-sm-4 navbar navbar-expand-md navbar-dark">
+				<button class="navbar-toggler ml-auto" type="button" data-toggle="collapse"
+						data-target="#navOptions" aria-controls="navOptions" aria-expanded="false" 
+						aria-label="Toggle navigation" 
+				>
+					<span class="navbar-toggler-icon text-light"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navOptions">
+					<ul class="navbar-nav mr-auto pl-3">
+						<li class="nav-item">
+							<a class="nav-link text-white" href="#about">About</a>
+							<a class="nav-link text-white" href="#contact">Contact</a>
+						</li>
+						<li class="nav-item dropdown">
+							<a class="nav-link text-white" href="#categories">Categories</a>
+							<a class="nav-link dropdown-toggle text-white" role="button" data-toggle="dropdown" 
+							   aria-expanded="false" 
+							>
+								Inventory
+							</a>
+							<div class="dropdown-menu">
+								<a class="dropdown-item" href="#">View Full Inventory</a> 
+								<div class="dropdown-divider"></div> 
+								<a class="dropdown-item" href="#">Artillery Shells</a> 
+								<a class="dropdown-item" href="#">Aerial Repeaters</a> 
+								<a class="dropdown-item" href="#">Firecrackers</a> 
+								<a class="dropdown-item" href="#">Roman Candles</a> 
+								<a class="dropdown-item" href="#">Fountains</a>
+								<a class="dropdown-item" href="#">Sparklers</a>
+								<a class="dropdown-item" href="#">ETC</a>
+								<a class="dropdown-item" href="#">ETC</a>
+							</div>
+						</li> 
+						<li class="nav-item">
+							<button id="headerSignInBtn" class="btn text-white">Sign-in</button>
+							<button id="headerLogoutBtn" class="btn text-white" style="display:none;">Log-Out</button>
+						</li> 
+						<li class="nav-item signupBtn">
+							<button id="headerSignupBtn" class="btn text-white">Sign-up</button>
+						</li>
+					</ul>
+				</div>
+			</nav>
+		</header>
+		<div class="container mt-5 text-light">
+			<h1 class="text-center mb-4">Terms of Service</h1>
+			<section>
+				<h2>Introduction</h2>
+				<p>
+					Welcome to Whistlin' Cooters! By using our services, you agree to these terms. 
+				</p>
+			</section>
+			<section>
+				<h2>Acceptance of Terms</h2>
+				<p>
+					By accessing our site, you accept these terms and conditions. 
+				</p>
+			</section>
+			<section>
+				<h2>User Responsibilities</h2>
+				<p>
+					Users must provide accurate information and maintain the confidentiality of their accounts. 
+				</p>
+			</section>
+			<section>
+				<h2>Account Terms</h2>
+				<p>
+					Accounts must be created with a valid email addres, and users are responsible for all activities under account. 
+				</p>
+			</section>
+			<section>
+				<h2>Prohibited Activities</h2>
+				<p>
+					You may not use our site for illegal activities or to upload harmful content. 
+				</p>
+			</section>
+			<section>
+				<h2>Termination of Service</h2>
+				<p>
+					We reserve the right to terminate accounts for violations of these terms. 
+				</p>
+			</section>
+			<section>
+				<h2>Liability Limitations</h2>
+				<p>
+					We are not liable for any damages arising from the use of our site. 
+				</p>
+			</section> 
+			<section>
+				<h2>Governing Law</h2>
+				<p>
+					These terms are governed by the laws of the state of Texas. 
+				</p>
+			</section>
+		</div>
+		<footer style="background-color:black;" class="footer row d-flex justify-content-around align-items-center">
+			<p id="cr" class="text-light">
+				&copy;
+			</p>
+			<p class="text-light">
+				<a href="/privacy-policy">Privacy</a> | 
+				<a href="#">Terms of Service</a>
+			</p>
+			<p class="text-light">
+				Site operated by Curt Sandford
+				<br />
+				Built and maintained by Scott Miller
+			</p>
+		</footer>
+		<script src="/webjars/jquery/3.1.1/jquery.min.js"></script>
+		<script src="/webjars/jquery-ui/1.12.1/jquery-ui.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+		<script src="/webjars/bootstrap/4.6.0/js/bootstrap.min.js"></script>
+		<script src="/js/main.js"></script> 
+		<script src="/js/signup.js"></script>
+		<script src="/js/signin.js"></script>
+		<script src="/js/toIndexLoginSignup.js"></script>
+	</body>
+</html>

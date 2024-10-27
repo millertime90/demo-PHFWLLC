@@ -1,0 +1,155 @@
+<!-- PRIVACY HTML --> 
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<title>Privacy Policy</title>
+		<meta name="viewport" 
+			  content="width=device-width, initial-scale=1.0" 
+		/>
+		<meta name="_csrf" th:content="${_csrf.token}" />
+		<meta name="_csrf_header" th:content="${_csrf.headerName}" />
+		<link rel="stylesheet" href="/webjars/bootstrap/4.6.0/css/bootstrap.min.css" /> 
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+		<link rel="stylesheet" href="/css/main.css" /> 
+		<!--<link rel="stylesheet" href="/css/index.css" />
+		<link rel="stylesheet" href="/css/carousel.css" /> 
+		<link rel="stylesheet" href="/css/bgimgs.css" /> -->
+		<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png" />
+		<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png" />
+		<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png" />
+		<link rel="manifest" href="/images/site.webmanifest" />
+	</head> 
+	
+	<body class="bg-dark">
+		<header class="header row">
+			<div class="col-sm-4">
+				<a href="#">
+					<img class="header_logo" type="image/png" src="/images/android-chrome-192x192.png"
+						 alt="WHISTLIN'COOTERS LOGO" 
+					/>
+				</a>
+			</div>
+			<div class="col-sm-4 d-flex flex-column mt-auto header_text">
+				<p id="authenticatedUser">
+					<i></i>
+				</p>
+				<h5 class="text-center text-light">ORDER HERE, PICK UP AT <i>PHFWLLC ADDRESS</i></h5> 
+			</div> 
+			<nav class="col-sm-4 navbar navbar-expand-md navbar-dark">
+				<button class="navbar-toggler ml-auto" type="button" data-toggle="collapse"
+						data-target="#navOptions" aria-controls="navOptions" aria-expanded="false" 
+						aria-label="Toggle navigation" 
+				>
+					<span class="navbar-toggler-icon text-light"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navOptions">
+					<ul class="navbar-nav mr-auto pl-3">
+						<li class="nav-item">
+							<a class="nav-link text-white" href="#about">About</a>
+							<a class="nav-link text-white" href="#contact">Contact</a>
+						</li>
+						<li class="nav-item dropdown">
+							<a class="nav-link text-white" href="#categories">Categories</a>
+							<a class="nav-link dropdown-toggle text-white" role="button" data-toggle="dropdown" 
+							   aria-expanded="false" 
+							>
+								Inventory
+							</a>
+							<div class="dropdown-menu">
+								<a class="dropdown-item" href="#">View Full Inventory</a> 
+								<div class="dropdown-divider"></div> 
+								<a class="dropdown-item" href="#">Artillery Shells</a> 
+								<a class="dropdown-item" href="#">Aerial Repeaters</a> 
+								<a class="dropdown-item" href="#">Firecrackers</a> 
+								<a class="dropdown-item" href="#">Roman Candles</a> 
+								<a class="dropdown-item" href="#">Fountains</a>
+								<a class="dropdown-item" href="#">Sparklers</a>
+								<a class="dropdown-item" href="#">ETC</a>
+								<a class="dropdown-item" href="#">ETC</a>
+							</div>
+						</li> 
+						<li class="nav-item">
+							<button id="headerSignInBtn" class="btn text-white">Sign-in</button>
+							<button id="headerLogoutBtn" class="btn text-white" style="display:none;">Log-Out</button>
+						</li> 
+						<li class="nav-item signupBtn">
+							<button id="headerSignupBtn" class="btn text-white">Sign-up</button>
+						</li>
+					</ul>
+				</div>
+			</nav>
+		</header>
+		<div class="container mt-5 text-light">
+			<h1 class="text-center mb-4">Privacy Policy</h1>
+			<section>
+				<h2>Introduction</h2>
+				<p>
+					At Whistlin' Cooters, we value your privacy and strive to protect your personal information. 
+					This policy outlines how we collect, use, and share your data. 
+				</p>
+			</section>
+			<section>
+				<h2>Information Collection</h2>
+				<p>
+					We collect personal details such as your name, email address, and address when you make a purchase. 
+					We do not save credit/debit card information. 
+					We also gather usage data like your browsing history and preferences. 
+				</p>
+			</section>
+			<section>
+				<h2>Use of Information</h2>
+				<p>
+					Your information helps us process orders, improve our services, and send promotional offers via email. 
+				</p>
+			</section>
+			<section>
+				<h2>Data Sharing</h2>
+				<p>
+					We only share your data with trusted third parties necessary for order fulfillment and legal compliance. 
+				</p>
+			</section>
+			<section>
+				<h2>Data Security</h2>
+				<p>
+					We employ advanced security measures to safeguard your data. 
+				</p>
+			</section>
+			<section>
+				<h2>User Rights</h2>
+				<p>
+					You have the right to access, correct, or delete your personal information. 
+				</p>
+			</section>
+			<section>
+				<h2>Policy Changes</h2>
+				<p>
+					We will notify you via email if we make significant changes to this policy. 
+				</p>
+			</section>
+		</div>
+		<footer style="background-color:black;" class="footer row d-flex justify-content-around align-items-center">
+			<p id="cr" class="text-light">
+				&copy;
+			</p>
+			<p class="text-light">
+				<a href="/privacy-policy">Privacy</a> | 
+				<a href="#">Terms of Service</a>
+			</p>
+			<p class="text-light">
+				Site operated by Curt Sandford
+				<br />
+				Built and maintained by Scott Miller
+			</p>
+		</footer>
+		<script src="/webjars/jquery/3.1.1/jquery.min.js"></script>
+		<script src="/webjars/jquery-ui/1.12.1/jquery-ui.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+		<script src="/webjars/bootstrap/4.6.0/js/bootstrap.min.js"></script>
+		<script src="/js/main.js"></script> 
+		<script src="/js/signup.js"></script>
+		<script src="/js/signin.js"></script>
+		<script src="/js/toIndexLoginSignup.js"></script>
+	</body>
+</html>

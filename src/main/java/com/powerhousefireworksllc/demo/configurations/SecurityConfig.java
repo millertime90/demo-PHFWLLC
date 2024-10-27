@@ -32,6 +32,7 @@ public class SecurityConfig {
 
         http.authorizeHttpRequests(requests -> requests
                 .requestMatchers("/index", "/verify", "/password-reset").permitAll()
+                .requestMatchers("/privacy-policy", "/terms-of-service").permitAll()
                 .requestMatchers("/css/**", "/js/**", "/webjars/**").permitAll()
                 .requestMatchers("/images/**", "/video/**").permitAll()
                 .requestMatchers("/signup", "/perform_login", "/perform_logout").permitAll()

@@ -193,8 +193,12 @@ $(document).ready(function() {
 	]
 	.forEach(i => {
 		
-		i.addEventListener("click", toSignupModal); 
-		i.addEventListener("touchend", toSignupModal); 
+		if(i) { 
+			
+			i.addEventListener("click", toSignupModal); 
+			i.addEventListener("touchend", toSignupModal); 
+		
+		} 
 		
 	}); 
 	
@@ -208,22 +212,31 @@ $(document).ready(function() {
 	headerSignInBtn.addEventListener("click", toSigninModal); 
 	headerSignInBtn.addEventListener("touchend", toSigninModal); 
 	
-	getRetrieveUsernameModal.addEventListener("click", toRetrieveUsernameModal); 
-	getRetrieveUsernameModal.addEventListener("touchend", toRetrieveUsernameModal); 
+	try { 
 	
-	getPasswordResetModal.addEventListener("click", toPasswordResetModal); 
-	getPasswordResetModal.addEventListener("touchend", toPasswordResetModal); 
+		getRetrieveUsernameModal.addEventListener("click", toRetrieveUsernameModal); 
+		getRetrieveUsernameModal.addEventListener("touchend", toRetrieveUsernameModal); 
 	
-	headerLogoutBtn.addEventListener("click", logout); 
-	headerLogoutBtn.addEventListener("touchend", logout); 
+		getPasswordResetModal.addEventListener("click", toPasswordResetModal); 
+		getPasswordResetModal.addEventListener("touchend", toPasswordResetModal); 
 	
-	retrieveUsernameBtn.addEventListener("click", retrieveUsername); 
-	retrieveUsernameBtn.addEventListener("touchend", retrieveUsername); 
+		headerLogoutBtn.addEventListener("click", logout); 
+		headerLogoutBtn.addEventListener("touchend", logout); 
 	
-	sendPasswordResetLinkForm.addEventListener("submit", sendPasswordResetLink); 
+		retrieveUsernameBtn.addEventListener("click", retrieveUsername); 
+		retrieveUsernameBtn.addEventListener("touchend", retrieveUsername); 
+	
+		sendPasswordResetLinkForm.addEventListener("submit", sendPasswordResetLink); 
+	
+	} 
+	catch(error) {
+		
+		console.error("Either at least one or all of these elements are not present for the current view.", error); 
+		
+	}
 
 	let cr = document.querySelector("#cr"); 
 	let d = new Date(); 
-	cr.innerHTML = cr.innerHTML + d.getFullYear(); 
+	cr.innerHTML = cr.innerHTML + d.getFullYear() + " WCFW"; 
 
 }); 
