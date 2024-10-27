@@ -16,7 +16,7 @@ import com.powerhousefireworksllc.demo.repositories.PasswordResetTokenRepository
 public class PasswordResetTokenService { 
 	
 	@Autowired
-	PasswordResetTokenRepository passwordResetTokenRepository; 
+	private PasswordResetTokenRepository passwordResetTokenRepository; 
 	
 	public void storePasswordResetToken(User user, String token) {
 		

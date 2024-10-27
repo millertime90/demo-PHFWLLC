@@ -73,7 +73,7 @@ public class SecurityConfig {
                         .logoutSuccessUrl("/index")
                         .invalidateHttpSession(true)
                         .deleteCookies("JSESSIONID"))
-                .csrf(csrf -> csrf.ignoringRequestMatchers("/signup", "/verifyToken", "/perform_logout", "/password-reset")); 
+                .csrf(csrf -> csrf.ignoringRequestMatchers("/signup", "/verifyToken", "/perform_logout", "/password-reset", "/forgot-password")); 
 		
 		return http.build(); 
 		

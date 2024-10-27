@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -30,6 +31,9 @@ public class PasswordResetController {
 	@Autowired
 	private PasswordResetTokenService passwordResetTokenService; 
 	
+	@Value("${app.base.url}")
+	private String baseURL; 
+	
 	@GetMapping({"/", "/password-reset"})
 	public ModelAndView renderPasswordResetView(@RequestParam("username") String username, @RequestParam("token") String token) {
 		
@@ -45,7 +49,11 @@ public class PasswordResetController {
 	@ResponseBody
 	public ResponseEntity<Map<String, String>> resetPassword(@RequestParam("username") String username, @RequestParam("token") String token, @RequestBody Map<String, String> passwordResetData) throws Exception {
 		
+		System.out.println("`resetPassword` method invoked"); 
+		
 		Map<String, String> response = new HashMap<>(); 
+		
+		System.out.println(response); 
 		
 		try {
 		
@@ -55,12 +63,25 @@ public class PasswordResetController {
 			this.userService.updatePassword(user, passwordResetData.get("password"), passwordResetData.get("confirm_password")); 
 		
 			String message = "Your password has reset successfully."; 
+			String redirectURL = this.baseURL + "/index?verified=true"; 
+			
 			response.put("message", message); 
+			response.put("redirectURL", redirectURL); 
+			response.put("bodyText", "login, login"); 
 		
 		}
 		catch(InvalidPasswordResetTokenException ex) {
 			
+			String redirectURL = this.baseURL + "/index?verified=true"; 
+			
 			response.put("message", ex.getMessage()); 
+			response.put("redirectURL", redirectURL); 
+			response.put("bodyText", "navigate to login modal then click/press \"here\" following \"Forgot Password?\", login"); 
+			
+			System.out.println("message: " + response.get("message")); 
+			System.out.println("redirectURL: " + response.get("redirectURL")); 
+			System.out.println("bodyText: " + response.get("bodyText")); 
+			
 			return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST); 
 			
 		}

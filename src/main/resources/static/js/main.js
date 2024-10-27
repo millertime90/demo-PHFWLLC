@@ -104,16 +104,59 @@ $(document).ready(function() {
 		
 	}
 	
-	function sendPasswordResetLink() {
+	function sendPasswordResetLink(e) {
+		
+		e.preventDefault(); 
+		
+		console.log(document.querySelector("#sendPasswordResetLinkBtn")); 
+		console.log("Above element to fetch onclick to `/forgot-password`"); 
+		console.log((() => {
+			
+			let optionsObject = {
+				method: "POST", 
+				headers: {
+					"Content-Type": "application/json", 
+					"Accept": "application/json" 
+				}, 
+				body: JSON.stringify({
+					emailAddress: $("#sendResetPasswordLinkModal input[name='resetLinkToEmail']").val()
+				})
+			}; 
+			
+			let str = "Options Object passed into `fetch`:\n"; 
+			
+			for(let i in optionsObject) {
+				
+				if(typeof optionsObject[i] === "object") {
+					
+					str += "Key: " + i + ", Value: " + JSON.stringify(optionsObject[i]) + "\n"; 
+					
+				}
+				else { 
+					
+					str += "Key: " + i + ", Value: " + optionsObject[i] + "\n"; 
+				
+				} 
+				
+			} 
+			
+			return str; 
+			
+		})()); 
 		
 		fetch("/forgot-password", {
 			method: "POST", 
-			headers: { "Accept": "application/json" },
+			headers: { 
+				"Content-Type": "application/json", 
+				"Accept": "application/json" 
+			},
 			body: JSON.stringify({ 
 				emailAddress: $("#sendResetPasswordLinkModal input[name='resetLinkToEmail']").val()
 			})
 		})
 		.then(response => {
+			
+			console.log(response); 
 			
 			if(!response.ok) {
 				
@@ -160,7 +203,7 @@ $(document).ready(function() {
 	let getRetrieveUsernameModal = document.querySelector("#getRetrieveUsernameModal");
 	let getPasswordResetModal = document.querySelector("#getPasswordResetModal");  
 	let retrieveUsernameBtn = document.querySelector("#retrieveUsernameBtn"); 
-	let sendPasswordResetLinkBtn = document.querySelector("#sendPasswordResetLinkBtn"); 
+	let sendPasswordResetLinkForm = document.querySelector("#sendPasswordResetLinkForm"); 
 	
 	headerSignInBtn.addEventListener("click", toSigninModal); 
 	headerSignInBtn.addEventListener("touchend", toSigninModal); 
@@ -177,8 +220,7 @@ $(document).ready(function() {
 	retrieveUsernameBtn.addEventListener("click", retrieveUsername); 
 	retrieveUsernameBtn.addEventListener("touchend", retrieveUsername); 
 	
-	sendPasswordResetLinkBtn.addEventListener("click", sendPasswordResetLink); 
-	sendPasswordResetLinkBtn.addEventListener("touchend", sendPasswordResetLink); 
+	sendPasswordResetLinkForm.addEventListener("submit", sendPasswordResetLink); 
 
 	let cr = document.querySelector("#cr"); 
 	let d = new Date(); 

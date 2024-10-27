@@ -136,7 +136,9 @@ $(document).ready(function() {
     $(confirmPasswordField).on("input", updatePasswordLabels);
 
     $("#signupForm").on("submit", function(e) {
+		
         e.preventDefault();
+        
         let formData = {
             password: $("#signupForm input[name='password']").val(),
             confirm_password: $("#signupForm input[name='confirm_password']").val()
@@ -144,6 +146,25 @@ $(document).ready(function() {
         
         let csrfToken = document.querySelector("meta[name='_csrf']").getAttribute("content"); 
 		let csrfHeaderName = document.querySelector("meta[name='_csrf_header']").getAttribute("content"); 
+		let secondElem = document.querySelector("#s"); 
+		let redirectInterval = function(elem, response) {
+			
+			let dur = 10; 
+			let _interval = window.setInterval(function() {
+				
+				dur -= 1; 
+				elem.textContent = dur; 
+				
+				if(dur < 1) {
+					
+					window.clearInterval(_interval); 
+					window.location.href = response.redirectURL; 
+					
+				}
+				
+			}, 1000); 
+			
+		}; 
 
         $.ajax({
             url: "/reset-password?username=" + $("#username").val() + "&token=" + $("#token").val(),
@@ -156,17 +177,35 @@ $(document).ready(function() {
 				[csrfHeaderName]: csrfToken
 			},
             success: function(response) {
+				
                 console.log(response.message);
                 $(signupBtn).prop("disabled", true);
                 $("#signupForm")[0].reset();
+                
+                $("#redirectModal").modal("show"); 
+                $("#redirectModalLabel").text(response.message); 
+                $(".modal-body a").attr("href", response.redirectURL); 
+                $("#bodyText1").text(response.bodyText.split(", ")[0]); 
+                $("#bodyText2").text(response.bodyText.split(", ")[1]); 
+                redirectInterval(secondElem, response); 
+                
             },
-            error: function(xhr, status, error) {
+            error: function(xhr, status, error) { 
+				
 				console.log(xhr.responseText); 
                 let response = JSON.parse(xhr.responseText);
                 alert(response.message);
                 console.error(error, status);
-                console.error(response.message);
-            }
+                console.error(response.message); 
+                
+                $("#redirectModal").modal("show"); 
+                $("#redirectModalLabel").text(response.message); 
+                $(".modal-body a").attr("href", response.redirectURL); 
+                $("#bodyText1").text(response.bodyText.split(", ")[0]); 
+                $("#bodyText2").text(response.bodyText.split(", ")[1]);
+                redirectInterval(secondElem, response);  
+                
+            } 
         });
     });
 });
