@@ -32,6 +32,7 @@ public class SecurityConfig {
 
         http.authorizeHttpRequests(requests -> requests
                 .requestMatchers("/index", "/verify", "/password-reset").permitAll()
+                .requestMatchers("/", "/oauth2/**").permitAll()
                 .requestMatchers("/privacy-policy", "/terms-of-service").permitAll()
                 .requestMatchers("/css/**", "/js/**", "/webjars/**").permitAll()
                 .requestMatchers("/images/**", "/video/**").permitAll()
@@ -69,12 +70,17 @@ public class SecurityConfig {
                         	System.out.println("The password to be authenticated may or may not be getting salted and hashed to: " + hashedSubmittedPassword);
                         })
                         .permitAll())
+                .oauth2Login(oauth2Login -> oauth2Login
+                		.loginPage("/index")
+                		.defaultSuccessUrl("/index", true)
+                		.failureUrl("/index?error=true"))
                 .logout(logout -> logout
                         .logoutUrl("/perform_logout")
                         .logoutSuccessUrl("/index")
                         .invalidateHttpSession(true)
                         .deleteCookies("JSESSIONID"))
-                .csrf(csrf -> csrf.ignoringRequestMatchers("/signup", "/verifyToken", "/perform_logout", "/password-reset", "/forgot-password")); 
+                .csrf(csrf -> csrf
+                		.ignoringRequestMatchers("/signup", "/verifyToken", "/perform_logout", "/password-reset", "/forgot-password")); 
 		
 		return http.build(); 
 		

@@ -24,7 +24,7 @@
 	<body class="bg-dark">
 		<header class="header row">
 			<div class="col-sm-4">
-				<a href="#">
+				<a href="/index">
 					<img class="header_logo" type="image/png" src="/images/android-chrome-192x192.png"
 						 alt="WHISTLIN'COOTERS LOGO" 
 					/>
@@ -482,10 +482,12 @@
 							</fieldset>
 							<fieldset class="col-sm-12">
 								<div class="form-group">
-									<button type="button" class="btn btn-block btn-danger">
-										<i class="fab fa-google fa-fw"></i>
-										Sign up with Google
-									</button>
+									<a class="btn btn-block btn-danger" href="/oauth2/authorization/google">
+										<button type="button" class="btn btn-block btn-danger">
+											<i class="fab fa-google fa-fw"></i>
+											Sign up with Google
+										</button>
+									</a>
 									<button type="button" class="btn btn-primary btn-block">
 										<i class="fab fa-facebook fa-fw"></i>
 										Sign up with Facebook
@@ -539,10 +541,14 @@
 							</fieldset>
 							<fieldset class="col-sm-12">
 								<div class="form-group">
-									<button type="button" class="btn btn-block btn-danger">
-										<i class="fab fa-google fa-fw"></i>
-										Sign in with Google
-									</button>
+									<a class="btn btn-block btn-danger" href="/oauth2/authorization/google">
+										<button class="btn btn-block btn-danger" type="button"
+												href="/oauth2/authorization/google"
+										>
+											<i class="fab fa-google fa-fw"></i>
+											Sign in with Google
+										</button>
+									</a>
 									<button type="button" class="btn btn-block btn-primary">
 										<i class="fab fa-facebook fa-fw"></i>
 										Sign in with Facebook
