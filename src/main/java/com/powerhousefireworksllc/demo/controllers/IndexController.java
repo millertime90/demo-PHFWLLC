@@ -5,7 +5,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.GetMapping; 
-import org.springframework.web.bind.annotation.PostMapping; 
+import org.springframework.web.bind.annotation.PostMapping;
+
+import org.slf4j.Logger; 
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired; 
 import org.springframework.web.bind.annotation.ExceptionHandler; 
 
@@ -18,7 +21,8 @@ import java.util.HashMap;
 import java.util.UUID;
 
 import com.powerhousefireworksllc.demo.DTO.RegistrationDTO; 
-import com.powerhousefireworksllc.demo.services.UserService; 
+import com.powerhousefireworksllc.demo.services.UserService;
+
 import com.powerhousefireworksllc.demo.services.EmailService;
 import com.powerhousefireworksllc.demo.services.PasswordResetTokenService;
 import com.powerhousefireworksllc.demo.models.User; 
@@ -43,10 +47,12 @@ public class IndexController {
 	@Autowired
 	private PasswordResetTokenService passwordResetTokenService; 
 	
+	private static final Logger logger = LoggerFactory.getLogger(IndexController.class); 
+	
 	@GetMapping({"/", "/index"})
 	public ModelAndView getIndex() { 
 		
-		System.out.println("`getIndex` method invoked."); 
+		logger.info("`getIndex` method invoked"); 
 		
 		ModelAndView modelAndView = new ModelAndView("index"); 
 		return modelAndView; 
